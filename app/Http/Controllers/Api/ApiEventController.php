@@ -11,13 +11,13 @@ class ApiEventController extends Controller
 {
     public function getEvents(Request $request)
     {
-        $events = Event::where('status_id', '3')->get();
+        $events = Event::where('status_id', '3');
 
         if ($request->search) {
             $events = $events->where('title', 'LIKE', "%$request->search%");
         }
 
-        $events = $events->orderBy('date', 'desc');
+        $events = $events->orderBy('start_date');
 
         $size = $request->size ?? 5;
         $page = $request->page ?? 1;
@@ -40,6 +40,7 @@ class ApiEventController extends Controller
             $eventData->description = str_replace('</p><p>', '. ', $eventData->description);
             $eventData->description = str_replace('<p>', '', $eventData->description);
             $eventData->description = str_replace('</p>', '', $eventData->description);
+            $eventData->description = str_replace('<br>', '', $eventData->description);
 
             $words = str_word_count($eventData->description, 2);
 

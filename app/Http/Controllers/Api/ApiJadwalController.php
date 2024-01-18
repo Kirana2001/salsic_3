@@ -10,13 +10,13 @@ class ApiJadwalController extends Controller
 {
     public function getJadwal(Request $request)
     {
-        $jadwal = Jadwal::where('status_id', '1')->get();
+        $jadwal = Jadwal::where('status_id', '1');
 
         if ($request->search) {
             $jadwal = $jadwal->where('tim_a', 'LIKE', "%$request->search%")->orWhere('tim_b', 'LIKE', "%$request->search%");
         }
 
-        $jadwal = $jadwal->orderBy('date', 'desc');
+        $jadwal = $jadwal->orderBy('date')->orderBy('time');
 
         $size = $request->size ?? 5;
         $page = $request->page ?? 1;

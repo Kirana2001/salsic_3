@@ -39,6 +39,7 @@ class ApiArticleController extends Controller
             $articleData->content = str_replace('</p><p>', '. ', $articleData->content);
             $articleData->content = str_replace('<p>', '', $articleData->content);
             $articleData->content = str_replace('</p>', '', $articleData->content);
+            $articleData->content = str_replace('<br>', '', $articleData->content);
 
             $words = str_word_count($articleData->content, 2);
 

@@ -8,15 +8,15 @@ use Illuminate\Http\Request;
 
 class ApiProfileController extends Controller
 {
-    public function getgetProfile(Request $request)
+    public function getProfiles(Request $request)
     {
-        $profiles = Profile::all();
+        // $profiles = Profile::all();
 
-        if ($request->search) {
-            $profiles = $profiles->where('title', 'LIKE', "%$request->search%");
-        }
+        // if ($request->search) {
+        //     $profiles = $profiles->where('title', 'LIKE', "%$request->search%");
+        // }
 
-        $profiles = $profiles->orderBy('created_at', 'desc');
+        $profiles = Profile::orderBy('created_at', 'desc');
 
         $size = $request->size ?? 5;
         $page = $request->page ?? 1;
