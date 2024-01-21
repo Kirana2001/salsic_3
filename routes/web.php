@@ -102,6 +102,7 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(PemudaController::class)->group(function () {
             Route::resource('/pemudas', PemudaController::class);
             Route::get('/pemudas-datatable', 'pemudaDatatable');
+            Route::get('/pendaftaran-pemudas', 'registrationIndex');
         });
 
         Route::controller(AnggotaController::class)->group(function () {

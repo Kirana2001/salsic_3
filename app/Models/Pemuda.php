@@ -28,4 +28,9 @@ class Pemuda extends Model
     {
         return $this->hasMany('App\Models\Anggota');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

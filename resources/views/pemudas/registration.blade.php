@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Atlet')
+@section('title', 'Pemuda')
 
 @section('css')
 <style type="text/css">
@@ -15,7 +15,7 @@
 	<div class="page-header page-header-light">
 		<div class="page-header-content header-elements-md-inline">
 			<div class="page-title d-flex">
-				<h4><span class="font-weight-semibold">Indeks</span> - Atlet</h4>
+				<h4><span class="font-weight-semibold">Indeks</span> - Pemuda</h4>
 				<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 			</div>
 		</div>
@@ -28,22 +28,22 @@
 		<!-- Hover rows -->
 		<div class="card">
 			<div class="card-header header-elements-inline">
-				{{-- <a href="{{url('/atlets/create')}}"><button type="button" class="btn btn-success rounded-round"><i class="icon-add mr-2"></i> Tambah</button></a> --}}
+				<a href="{{url('/pemudas/create')}}"><button type="button" class="btn btn-success rounded-round"><i class="icon-add mr-2"></i> Tambah</button></a>
 			</div>
 
 			<table class="table datatable-basic table-hover">
 				<thead>
 					<tr>
 						<th style="width:5%;">No</th>
-						<th>Nama</th>
-                        <th>NIK</th>
+						<th>Nama Organisasi</th>
+                        <th>Username</th>
 						<th>Cabor</th>
-						<th>Tempat / Tanggal Lahir</th>
                         <th>Telepon</th>
+						<th>Alamat</th>
                         <th>Status</th>
 						<th style="text-align: center">Actions</th>
 					</tr>
-				</thead>
+				<`/thead>
 				<tbody>
 				</tbody>
 			</table>
@@ -123,19 +123,19 @@
 
                 let datas = [
                     {data:'DT_RowIndex', name:'no'},
-                    {data: 'name'},
-                    {data: 'nik'},
+                    {data: 'organization_name'},
+                    {data: 'user.username'},
                     {data: 'cabor_string'},
-                    {data: 'ttl_string'},
                     {data: 'phone'},
+                    {data: 'address'},
                     {data: 'status_string'},
                     {data:null, render:function(data, type, row){
                         let html = '';
                         html += `
                         <div style="text-align:center">
-                            <a href="{{ url('atlets/${data.id}')}}"><button type="button" class="btn btn-success btn-icon"><i class="icon-file-text" title="Detail"></i></button></a>
-                            <a href="{{ url('atlets/${data.id}/edit')}}"><button type="button" class="btn btn-primary btn-icon"><i class="icon-pencil7" title="Edit"></i></button></a>
-                            <a class="delbutton" data-toggle="modal" data-target="#modal_theme_danger" data-uri="{{ url('atlets/${data.id}') }}"><button type="button" class="btn btn-danger btn-icon"><i class="icon-x" title="Delete"></i></button></a>
+                            <a href="{{ url('pemudas/${data.id}')}}"><button type="button" class="btn btn-success btn-icon"><i class="icon-file-text" title="Detail"></i></button></a>
+                            <a href="{{ url('pemudas/${data.id}/edit')}}"><button type="button" class="btn btn-primary btn-icon"><i class="icon-pencil7" title="Edit"></i></button></a>
+                            <a class="delbutton" data-toggle="modal" data-target="#modal_theme_danger" data-uri="{{ url('pemudas/${data.id}') }}"><button type="button" class="btn btn-danger btn-icon"><i class="icon-x" title="Delete"></i></button></a>
                         </div>
                         `;
                         return html
@@ -147,7 +147,7 @@
 					processing: true,
 					serverSide: true,
 					ajax: {
-                            url: "{{url('/atlets-datatable')}}?verified=0",
+                            url: "{{url('/pemudas-datatable')}}?verified=0",
                             type: "GET",
                         },
 					columns: datas,

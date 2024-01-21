@@ -61,7 +61,7 @@ class PemudaController extends Controller
         $userData['username'] = str_replace(' ','_',$data['organization_name']);
         $userData['password'] = bcrypt('salsic2024');
         $userData['phone'] = $data['phone'];
-        $userData['role_id'] = 20;
+        $userData['role_id'] = 40;
 
         if (User::where('username', $userData['username'])->count() > 0) {
             return redirect()->back()->withInput()->with('error', 'Username sudah digunakan');
@@ -73,7 +73,7 @@ class PemudaController extends Controller
         }
         $data['user_id'] = $newUser->id;
 
-        $data['status_id'] = 3;
+        $data['status_id'] = 1;
 
         $ok = Pemuda::create($data);
         if (!$ok) {
@@ -214,9 +214,15 @@ class PemudaController extends Controller
         foreach ($pemudas as $pemuda) {
             $pemuda['cabor_string'] = $pemuda->cabor->name;
             $pemuda['status_string'] = $pemuda->status->name;
+            $pemuda['user'] = $pemuda->user->username;
             $pemuda['documents'] = Documents::where('pemuda_id', $pemuda->id)->get();
         }
 
         return datatables()->of($pemudas)->addIndexColumn()->toJson();
+    }
+
+    public function registrationIndex()
+    {
+        return view('pemudas.registration');
     }
 }

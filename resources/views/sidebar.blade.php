@@ -145,6 +145,14 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{url('/pendaftaran-pemudas')}}" class="nav-link {{request()->is('pendaftaran-pemudas*') ? 'active' : ''}}">
+                                <span>
+                                    Pendaftaran Pemuda
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{url('/peminjaman-arena')}}" class="nav-link {{request()->is('peminjaman-arena*') ? 'active' : ''}}">
                                 <span>
                                     Peminjaman Arena
