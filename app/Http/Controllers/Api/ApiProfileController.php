@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ApiProfileController extends Controller
 {
-    public function getProfile(Request $request)
+    public function getProfiles(Request $request)
     {
         //$profiles = Profile::all();
 
