@@ -36,7 +36,7 @@
 					<tr>
 						<th style="width:5%;">No</th>
 						<th>Organisasi</th>
-						<th>Cabor</th>
+						<th>Bidang</th>
                         {{-- <th>Tanggal Didirikan</th> --}}
 						<th>Pendiri</th>
 						<th>Ketua</th>
@@ -132,7 +132,7 @@
                 let datas = [
                     {data:'DT_RowIndex', name:'no'},
                     {data: 'organization_name'},
-                    {data: 'cabor_string'},
+                    {data: 'bidang_string'},
                     // {data: 'founding_date'},
                     {data: 'founder'},
                     {data: 'leader'},

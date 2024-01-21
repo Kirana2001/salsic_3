@@ -19,6 +19,11 @@ class Pemuda extends Model
         return $this->belongsTo('App\Models\Cabor', 'cabor_id', 'id');
     }
 
+    public function bidang()
+    {
+        return $this->belongsTo('App\Models\Bidang');
+    }
+
     public function status()
     {
         return $this->belongsTo('App\Models\VerificationStatus', 'status_id', 'id');

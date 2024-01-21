@@ -37,7 +37,7 @@
 						<th style="width:5%;">No</th>
 						<th>Nama Organisasi</th>
                         <th>Username</th>
-						<th>Cabor</th>
+						<th>Bidang</th>
                         <th>Telepon</th>
 						<th>Alamat</th>
                         <th>Status</th>
@@ -125,7 +125,7 @@
                     {data:'DT_RowIndex', name:'no'},
                     {data: 'organization_name'},
                     {data: 'user.username'},
-                    {data: 'cabor_string'},
+                    {data: 'bidang_string'},
                     {data: 'phone'},
                     {data: 'address'},
                     {data: 'status_string'},

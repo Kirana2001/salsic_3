@@ -36,8 +36,8 @@
                             <label class="col-form-label col-lg-10">{{$pemudas->organization_name}}</label>
 						</div>
 						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Cabor</label>
-							<label class="col-form-label col-lg-10">{{$pemudas->cabor->name}}</label>
+							<label class="col-form-label col-lg-2">Bidang</label>
+							<label class="col-form-label col-lg-10">{{$pemudas->bidang->name ?? '-'}}</label>
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Pendiri</label>

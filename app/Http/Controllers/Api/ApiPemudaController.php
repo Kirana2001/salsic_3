@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bidang;
 use App\Models\Cabor;
 use App\Models\Documents;
 use App\Models\Pemuda;
@@ -18,11 +19,12 @@ class ApiPemudaController extends Controller
         $datas = Pemuda::where('user_id', Auth::user()->id)->get();
 
         foreach ($datas as $data) {
-            $data->cabor = Cabor::find($data->cabor_id)->name;
+            // $data->cabor = Cabor::find($data->cabor_id)->name;
+            $data->bidang = Bidang::find($data->bidang_id)->name;
             $data->status = VerificationStatus::find($data->status_id)->name;
         }
 
-        $datas->makeHidden(['cabor_id', 'status_id', 'created_at', 'updated_at', 'deleted_at']);
+        $datas->makeHidden(['cabor_id', 'status_id', 'created_at', 'updated_at', 'deleted_at', 'bidang_id']);
 
         return response()->json([
             'code' => 200,
@@ -40,7 +42,8 @@ class ApiPemudaController extends Controller
     {
         $request->validate([
             'organization_name' => 'required',
-            'cabor_id' => 'required',
+            // 'cabor_id' => 'required',
+            'bidang_id' => 'required',
             'founder' => 'required',
             'leader' => 'required',
             'secretary' => 'required',
@@ -48,10 +51,15 @@ class ApiPemudaController extends Controller
             'description' => 'required',
             'phone' => 'required',
             'address' => 'required',
-            'document' => 'required',
+            // 'document' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method', 'document']);
+
+        if($data['addBidang'] != null){
+            $createBidang = Bidang::firstOrCreate(['name' => $data['addBidang']]);
+            $data['bidang_id'] = $createBidang->id;
+        }
 
         $data['user_id'] = Auth::user()->id;
 
@@ -113,7 +121,8 @@ class ApiPemudaController extends Controller
                 'message' => 'Data not found'
             ]);
         }
-        $data->cabor = Cabor::find($data->cabor_id)->name;
+        // $data->cabor = Cabor::find($data->cabor_id)->name;
+        $data->bidang = Bidang::find($data->bidang_id)->name;
         $data->status = VerificationStatus::find($data->status_id)->name;
         $documents = [];
         $getDocuments = Documents::where('pemuda_id', $data->id)->get();
@@ -124,7 +133,7 @@ class ApiPemudaController extends Controller
             // array_push($documents, base64_encode($fileContent));
         }
         $data->documents = $documents;
-        $data->makeHidden(['cabor_id', 'status_id', 'created_at', 'updated_at', 'deleted_at', 'nik', 'founding_date', 'village', 'subdistrict', 'district', 'city', 'province', 'all_member', 'image']);
+        $data->makeHidden(['cabor_id', 'status_id', 'created_at', 'updated_at', 'deleted_at', 'nik', 'founding_date', 'village', 'subdistrict', 'district', 'city', 'province', 'all_member', 'image', 'bidang_id']);
 
         return response()->json([
             'code' => 200,
@@ -137,7 +146,8 @@ class ApiPemudaController extends Controller
     {
         $request->validate([
             'organization_name' => 'required',
-            'cabor_id' => 'required',
+            // 'cabor_id' => 'required',
+            'bidang_id' => 'required',
             'founder' => 'required',
             'leader' => 'required',
             'secretary' => 'required',
@@ -149,6 +159,11 @@ class ApiPemudaController extends Controller
         ]);
 
         $data = $request->except(['_token', '_method', 'document']);
+
+        if($data['addBidang'] != null){
+            $createBidang = Bidang::firstOrCreate(['name' => $data['addBidang']]);
+            $data['bidang_id'] = $createBidang->id;
+        }
 
         if ($request->image) {
             $imageDestination = 'attachment/'.date('Y/m').'/pemuda-image';

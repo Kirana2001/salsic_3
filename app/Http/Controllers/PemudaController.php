@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bidang;
 use App\Models\Cabor;
 use App\Models\Documents;
 use App\Models\Pemuda;
@@ -30,6 +31,7 @@ class PemudaController extends Controller
     public function create()
     {
         $datas['cabors'] = Cabor::all();
+        $datas['bidangs'] = Bidang::all();
 
         return view('pemudas.create', $datas);
     }
@@ -44,7 +46,8 @@ class PemudaController extends Controller
     {
         $request->validate([
             'organization_name' => 'required',
-            'cabor_id' => 'required',
+            // 'cabor_id' => 'required',
+            'bidang_id' => 'required',
             'founder' => 'required',
             'leader' => 'required',
             'secretary' => 'required',
@@ -56,6 +59,11 @@ class PemudaController extends Controller
         ]);
 
         $data = $request->except(['_token', '_method', 'document']);
+
+        if($data['addBidang'] != null){
+            $createBidang = Bidang::firstOrCreate(['name' => $data['addBidang']]);
+            $data['bidang_id'] = $createBidang->id;
+        }
 
         $userData['name'] = $data['organization_name'];
         $userData['username'] = str_replace(' ','_',$data['organization_name']);
@@ -109,6 +117,7 @@ class PemudaController extends Controller
         $datas['pemudas'] = Pemuda::find($id);
         $datas['statuses'] = VerificationStatus::all();
         $datas['documents'] = Documents::where('pemuda_id', $datas['pemudas']->id)->get();
+        $datas['bidangs'] = Bidang::all();
 
         return view('pemudas.show', $datas);
     }
@@ -123,6 +132,7 @@ class PemudaController extends Controller
     {
         $datas['pemudas'] = Pemuda::find($id);
         $datas['cabors'] = Cabor::all();
+        $datas['bidangs'] = Bidang::all();
         $datas['documents'] = Documents::where('pemuda_id', $datas['pemudas']->id)->get();
 // dd($datas['documents']);
         return view('pemudas.edit', $datas);
@@ -139,7 +149,8 @@ class PemudaController extends Controller
     {
         $request->validate([
             'organization_name' => 'required',
-            'cabor_id' => 'required',
+            // 'cabor_id' => 'required',
+            'bidang_id' => 'required',
             'founder' => 'required',
             'leader' => 'required',
             'secretary' => 'required',
@@ -147,12 +158,15 @@ class PemudaController extends Controller
             'description' => 'required',
             'phone' => 'required',
             'address' => 'required',
-            'document' => 'required',
+            // 'document' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method', 'image']);
 
-        if($request->all_member != ($request->male_member + $request->female_member))  return redirect()->back()->withInput()->with('error', 'Jumlah member tidak sesuai');
+        if($data['addBidang'] != null){
+            $createBidang = Bidang::firstOrCreate(['name' => $data['addBidang']]);
+            $data['bidang_id'] = $createBidang->id;
+        }
 
         if ($request->image) {
             $imageDestination = 'attachment/'.date('Y/m').'/pemuda-image';
@@ -214,7 +228,8 @@ class PemudaController extends Controller
     {
         $pemudas = Pemuda::orderBy('id', 'desc')->get();
         foreach ($pemudas as $pemuda) {
-            $pemuda['cabor_string'] = $pemuda->cabor->name;
+            // $pemuda['cabor_string'] = $pemuda->cabor->name;
+            $pemuda['bidang_string'] = $pemuda->bidang->name ?? '-';
             $pemuda['status_string'] = $pemuda->status->name;
             $pemuda['user'] = $pemuda->user->username;
             $pemuda['documents'] = Documents::where('pemuda_id', $pemuda->id)->get();

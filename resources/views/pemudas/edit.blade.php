@@ -41,21 +41,29 @@
 							</div>
 						</div>
                         <div class="form-group row">
-							<label class="col-form-label col-lg-2">Cabor <span class="text-danger">*</span> </label>
+							<label class="col-form-label col-lg-2">Bidang <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
-								<select name="cabor_id" id="cabor_id"
+								<select name="bidang_id" id="bidang_id"
                                 class="form-control form-control-select2" data-container-css-class="border-blue-700"
                                 data-dropdown-css-class="border-blue-700" required>
-                                @if ($cabors->count() < 1)
-                                    <option value="">-- Pilih Cabor --</option>
-                                @endif
-                                @foreach ($cabors as $cabor)
-                                    <option value="{{$cabor->id}}"
-                                        {{$pemudas->cabor_id == $cabor->id ? 'selected' : ''}}>{{$cabor->name}}</option>
-                            @endforeach
+                                    @if ($bidangs->count() < 1)
+                                        <option value="">-- Pilih Bidang --</option>
+                                    @endif
+                                    <option value="newBidang" class="font-weight-bold">Tambah Bidang</option>
+                                    @foreach ($bidangs as $bidang)
+                                        <option value="{{$bidang->id}} {{$pemudas->bidang_id == $bidang->id ? 'selected' : ''}}">{{$bidang->name}}</option>
+                                    @endforeach
                                 </select>
 							</div>
                         </div>
+                        <div class="form-group row" id="addBidangDiv">
+							<label class="col-form-label col-lg-2">Tambah Bidang <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="text" name="addBidang" id="addBidang"
+                                class="form-control border-blue-700 border-1 @error('addBidang') is-invalid @enderror"
+                                placeholder="Tambah Bidang" required autocomplete="off" value="{{old('addBidang') }}">
+							</div>
+						</div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Pendiri <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
@@ -212,16 +220,10 @@
                         organization_name: {
                             required: 'Mohon diisi.'
                         },
-                        founding_date: {
-                            required: 'Mohon diisi.'
-                        },
                         founder: {
                             required: 'Mohon diisi.'
                         },
                         leader: {
-                            required: 'Mohon diisi.'
-                        },
-                        nik: {
                             required: 'Mohon diisi.'
                         },
                         phone: {
@@ -230,32 +232,11 @@
                         address: {
                             required: 'Mohon diisi.'
                         },
-                        village: {
-                            required: 'Mohon diisi.'
-                        },
-                        subdistrict: {
-                            required: 'Mohon diisi.'
-                        },
-                        district: {
-                            required: 'Mohon diisi.'
-                        },
-                        city: {
-                            required: 'Mohon diisi.'
-                        },
-                        province: {
-                            required: 'Mohon diisi.'
-                        },
-                        all_member: {
-                            required: 'Mohon diisi.'
-                        },
                         male_member: {
                             required: 'Mohon diisi.'
                         },
                         female_member: {
                             required: 'Mohon diisi.'
-                        },
-                        cabor_id: {
-                            required: 'Mohon pilih salah satu.'
                         },
                     },
                 });
@@ -292,6 +273,18 @@
                 reader.readAsDataURL(file);
             }
         });
+        
+        $('#bidang_id').on('change', function(){
+            if($(this).val() == 'newBidang'){
+                $('#addBidangDiv').show();
+                $('#bidang_id').attr('required', false);
+                $('#addBidang').attr('required', true);
+            } else {
+                $('#addBidangDiv').hide();
+                $('#bidang_id').attr('required', true);
+                $('#addBidang').attr('required', false);
+            }
+        })
     </script>
 	<script type="text/javascript">
 		$( document ).ready(function() {
