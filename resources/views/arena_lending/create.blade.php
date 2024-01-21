@@ -26,7 +26,7 @@
 			<div class="card-header header-elements-inline">
 			</div>
 			<div class="card-body">
-				<form id="submit-form" class="form-validate-jquery" action="{{url('/peminjaman-arena')}}" method="post">
+				<form id="submit-form" class="form-validate-jquery" action="{{url('/peminjaman-arena')}}" method="post" enctype="multipart/form-data">
 					@csrf
 					<fieldset class="mb-3">
 						<legend class="text-uppercase font-size-sm font-weight-bold">Data Peminjaman Arena</legend>

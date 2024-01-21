@@ -100,7 +100,7 @@ class ArenaApiController extends Controller
                 $data = array(
                     'name' => $file,
                     'arena_id' => $ok->id,
-                    'flag' => $data['nama_kegiatan']
+                    'flag' => $ok->nama_kegiatan
                 );
                 Documents::create($data);
             }

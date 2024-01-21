@@ -97,7 +97,7 @@ class ArenaLendingController extends Controller
                 $data = array(
                     'name' => $file,
                     'arena_id' => $ok->id,
-                    'flag' => $data['nama_kegiatan']
+                    'flag' => $ok->nama_kegiatan
                 );
                 Documents::create($data);
             }
@@ -196,7 +196,8 @@ class ArenaLendingController extends Controller
                 $file = $imageDestination.'/'.$fileName;
                 $data = array(
                     'name' => $file,
-                    'arena_id' => $ok->id
+                    'arena_id' => $ok->id,
+                    'flag' => $ok->nama_kegiatan
                 );
                 Documents::create($data);
             }

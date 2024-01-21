@@ -92,7 +92,7 @@ class ApiPemudaController extends Controller
                 $data = array(
                     'name' => $file,
                     'pemuda_id' => $ok->id,
-                    'flag' => $data['organization_name']
+                    'flag' => $ok->organization_name
                 );
                 Documents::create($data);
             }
@@ -170,7 +170,7 @@ class ApiPemudaController extends Controller
                 $data = array(
                     'name' => $file,
                     'pemuda_id' => $ok->id,
-                    'flag' => $data['organization_name']
+                    'flag' => $ok->organization_name
                 );
                 Documents::create($data);
             }

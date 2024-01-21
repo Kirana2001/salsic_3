@@ -26,7 +26,7 @@
 			<div class="card-header header-elements-inline">
 			</div>
 			<div class="card-body">
-				<form id="submit-form" class="form-validate-jquery" action="{{url('peminjaman-arena/'.$arenaLending->id)}}" method="post">
+				<form id="submit-form" class="form-validate-jquery" action="{{url('peminjaman-arena/'.$arenaLending->id)}}" method="post" enctype="multipart/form-data">
                     @method('PATCH')
 					@csrf
 					<fieldset class="mb-3">
