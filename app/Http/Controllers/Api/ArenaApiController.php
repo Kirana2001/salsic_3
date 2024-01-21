@@ -138,12 +138,21 @@ class ArenaApiController extends Controller
     public function lendHistoryDetail(Request $request)
     {
         $arena = ArenaLending::where('user_id', Auth::user()->id)->find($request->id);
+        if(!$arena) {
+            return response()->json([
+                'code' => 404,
+                'message' => 'Data not found'
+            ]);
+        }
         $arena->arena_name = Arena::find($arena->arena_id)->name;
         $arena->status = LendingStatus::find($arena->status_id)->name;
         $documents = [];
-        $getDocuments = Documents::where('arena_id', $arena->arena_id)->get();
-        foreach ($getDocuments as $value) {
-            array_push($documents, $value);
+        $getDocuments = Documents::where('arena_id', $arena->id)->get();
+        foreach ($getDocuments as $document) {
+            $fileContent = asset($document->name);
+            array_push($documents, $fileContent);
+            // $fileContent = file_get_contents($document->name);
+            // array_push($documents, base64_encode($fileContent));
         }
         $arena->documents = $documents;
         $arena->makeHidden(['arena_id', 'status_id', 'created_at', 'updated_at', 'deleted_at']);

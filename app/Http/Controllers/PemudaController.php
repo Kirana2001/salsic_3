@@ -89,7 +89,8 @@ class PemudaController extends Controller
                 $file = $imageDestination.'/'.$fileName;
                 $data = array(
                     'name' => $file,
-                    'pemuda_id' => $ok->id
+                    'pemuda_id' => $ok->id,
+                    'flag' => $ok->organization_name
                 );
                 Documents::create($data);
             }
@@ -182,7 +183,8 @@ class PemudaController extends Controller
                 $file = $imageDestination.'/'.$fileName;
                 $data = array(
                     'name' => $file,
-                    'pemuda_id' => $ok->id
+                    'pemuda_id' => $ok->id,
+                    'flag' => $ok->organization_name
                 );
                 Documents::create($data);
             }

@@ -107,12 +107,21 @@ class ApiPemudaController extends Controller
     public function show(Request $request)
     {
         $data = Pemuda::where('user_id', Auth::user()->id)->find($request->id);
+        if(!$data) {
+            return response()->json([
+                'code' => 404,
+                'message' => 'Data not found'
+            ]);
+        }
         $data->cabor = Cabor::find($data->cabor_id)->name;
         $data->status = VerificationStatus::find($data->status_id)->name;
         $documents = [];
-        $getDocuments = Documents::where('arena_id', $data->id)->get();
-        foreach ($getDocuments as $value) {
-            array_push($documents, $value);
+        $getDocuments = Documents::where('pemuda_id', $data->id)->get();
+        foreach ($getDocuments as $document) {
+            $fileContent = asset($document->name);
+            array_push($documents, $fileContent);
+            // $fileContent = file_get_contents($document->name);
+            // array_push($documents, base64_encode($fileContent));
         }
         $data->documents = $documents;
         $data->makeHidden(['cabor_id', 'status_id', 'created_at', 'updated_at', 'deleted_at', 'nik', 'founding_date', 'village', 'subdistrict', 'district', 'city', 'province', 'all_member', 'image']);
