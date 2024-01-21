@@ -140,6 +140,12 @@ class ArenaApiController extends Controller
         $arena = ArenaLending::where('user_id', Auth::user()->id)->find($request->id);
         $arena->arena_name = Arena::find($arena->arena_id)->name;
         $arena->status = LendingStatus::find($arena->status_id)->name;
+        $documents = [];
+        $getDocuments = Documents::where('arena_id', $arena->arena_id)->get();
+        foreach ($getDocuments as $value) {
+            array_push($documents, $value);
+        }
+        $arena->documents = $documents;
         $arena->makeHidden(['arena_id', 'status_id', 'created_at', 'updated_at', 'deleted_at']);
 
         return response()->json([
