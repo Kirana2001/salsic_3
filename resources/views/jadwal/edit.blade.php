@@ -103,7 +103,17 @@
                                 placeholder="Waktu Mulai" required autocomplete="off" cols="30" rows="5" value="{{ $jadwal->time }}">
 							</div>
 						</div>
-
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Foto <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<div class="card-img-actions mb-3">
+									<img class="card-img img-fluid" id="preview_image"
+                                    src="{{ asset($jadwal->image) }}" alt="" style="height:150px;width:150px;object-fit: contain;">
+								</div>
+							    <input type="file" name="image" id="image"
+                                class="form-control border-blue-700 border-1 @error('image') is-invalid @enderror">
+							</div>
+						</div>
 					</fieldset>
 					<div class="text-right">
 						<a href="{{ url('/jadwal')}}" class="btn btn-light">Kembali <i class="icon-undo"></i></a>

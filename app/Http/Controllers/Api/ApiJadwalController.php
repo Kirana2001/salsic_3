@@ -10,12 +10,14 @@ class ApiJadwalController extends Controller
 {
     public function getJadwal(Request $request)
     {
+        #$jadwal = Jadwal::where('status_id', '1')->get();
         $jadwal = Jadwal::where('status_id', '1');
 
         if ($request->search) {
             $jadwal = $jadwal->where('tim_a', 'LIKE', "%$request->search%")->orWhere('tim_b', 'LIKE', "%$request->search%");
         }
 
+        #$jadwal = $jadwal->orderBy('date', 'desc');
         $jadwal = $jadwal->orderBy('date')->orderBy('time');
 
         $size = $request->size ?? 5;
@@ -49,7 +51,8 @@ class ApiJadwalController extends Controller
                 'skor_b' => $jadwalData->skor_b,
                 'date' => $jadwalData->date,
                 'time' => $jadwalData->time,
-                'place' => $jadwalData->place
+                'place' => $jadwalData->place,
+                'image' => $jadwalData->image,
             ]);
         }
         $data = [
@@ -83,7 +86,8 @@ class ApiJadwalController extends Controller
                 'skor_b' => $jadwal->skor_b,
                 'date' => $jadwal->date,
                 'time' => $jadwal->time,
-                'place' => $jadwal->place
+                'place' => $jadwal->place,
+                'image' => $jadwal->image
             ];
         }
 

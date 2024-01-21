@@ -162,7 +162,7 @@ class ArenaController extends Controller
 
     public function arenaDatatable()
     {
-        $arenas = Arena::all();
+        $arenas = Arena::orderBy('id', 'desc')->get();
 
         return datatables()->of($arenas)->addIndexColumn()->toJson();
     }

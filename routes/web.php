@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ArenaController;
 use App\Http\Controllers\ArenaLendingController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AtletController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PelatihController;
@@ -28,13 +30,16 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/login');
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('/login', 'loginView');
+    Route::get('/login', 'loginView')->name('login');
     Route::post('/login', 'login');
     Route::get('/logout', 'logout');
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [LoginController::class, 'dashboard']);
+    Route::get('/atletExport', [FileController::class, 'atletExport']);
+    Route::get('/pelatihExport', [FileController::class, 'pelatihExport']);
+    Route::get('/wasitExport', [FileController::class, 'wasitExport']);
 
     Route::controller(UserController::class)->group(function () {
         Route::patch('/ubah-password/{id}',  'ubahPassSubmit');
@@ -97,6 +102,11 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(PemudaController::class)->group(function () {
             Route::resource('/pemudas', PemudaController::class);
             Route::get('/pemudas-datatable', 'pemudaDatatable');
+        });
+
+        Route::controller(AnggotaController::class)->group(function () {
+            Route::resource('/anggotas', AnggotaController::class);
+            Route::get('/anggotas-datatable', 'anggotaDatatable');
         });
 
         Route::controller(JadwalController::class)->group(function () {

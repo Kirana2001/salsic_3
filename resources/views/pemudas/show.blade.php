@@ -32,23 +32,12 @@
 						<legend class="text-uppercase font-size-sm font-weight-bold">Data Pemuda</legend>
 
                         <div class="form-group row">
-							<label class="col-form-label col-lg-2">Foto</label>
-                            <label class="col-form-label col-lg-2">
-                                <img class="card-img img-fluid" id="preview_image"
-                                src="{{asset($pemudas->image)}}" alt="" style="height:150px;width:150px;object-fit: contain;">
-                            </label>
-						</div>
-                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Organisasi</label>
                             <label class="col-form-label col-lg-10">{{$pemudas->organization_name}}</label>
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Cabor</label>
 							<label class="col-form-label col-lg-10">{{$pemudas->cabor->name}}</label>
-						</div>
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Tanggal Didirikan</label>
-							<label class="col-form-label col-lg-10">{{$pemudas->founding_date}}</label>
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-lg-2">Pendiri</label>
@@ -58,37 +47,27 @@
 							<label class="col-form-label col-lg-2">Ketua</label>
 							<label class="col-form-label col-lg-10">{{$pemudas->leader}}</label>
 						</div>
-                        <div class="form-group row">
-							<label class="col-form-label col-lg-2">NIK</label>
-                            <label class="col-form-label col-lg-10">{{$pemudas->nik}}</label>
+						<div class="form-group row">
+							<label class="col-form-label col-lg-2">Sekretaris</label>
+							<label class="col-form-label col-lg-10">{{$pemudas->secretary}}</label>
+						</div>
+						<div class="form-group row">
+							<label class="col-form-label col-lg-2">Bendahara</label>
+							<label class="col-form-label col-lg-10">{{$pemudas->treasurer}}</label>
 						</div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Telepon</label>
                             <label class="col-form-label col-lg-10">{{$pemudas->phone}}</label>
 						</div>
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Desa</label>
-                            <label class="col-form-label col-lg-10">{{$pemudas->village}}</label>
-						</div>
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Kelurahan</label>
-                            <label class="col-form-label col-lg-10">{{$pemudas->subdistrict}}</label>
-						</div>
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Kecamatan</label>
-                            <label class="col-form-label col-lg-10">{{$pemudas->district}}</label>
-						</div>
-						<div class="form-group row">
-							<label class="col-form-label col-lg-2">Kota</label>
-                            <label class="col-form-label col-lg-10">{{$pemudas->city}}</label>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Alamat</label>
+                            <label class="col-form-label col-lg-10">{{$pemudas->address}}</label>
 						</div>
                         <div class="form-group row">
-							<label class="col-form-label col-lg-2">Provinsi</label>
-                            <label class="col-form-label col-lg-10">{{$pemudas->province}}</label>
-						</div>
-                        <div class="form-group row">
-							<label class="col-form-label col-lg-2">Total Anggota</label>
-                            <label class="col-form-label col-lg-10">{{$pemudas->all_member}}</label>
+							<label class="col-form-label col-lg-2">Deskripsi</label>
+							<textarea name="address" id="address"
+                                class="form-control border-blue-700 border-1 col-lg-10 @error('address') is-invalid @enderror"
+                                placeholder="Alamat" required autocomplete="off" cols="30" rows="5" disabled>{{ $pemudas->description }}</textarea>
 						</div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Anggota Pria</label>
@@ -97,12 +76,6 @@
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Anggota Wanita</label>
                             <label class="col-form-label col-lg-10">{{$pemudas->female_member}}</label>
-						</div>
-                        <div class="form-group row">
-							<label class="col-form-label col-lg-2">Dokumen</label>
-							<div style="text-align:center">
-								<a href="{{ url($pemudas->document)}}" target="_blank"><button type="button" class="btn btn-warning btn-icon"><i class="icon-eye" title="File"></i></button></a>
-							</div>
 						</div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Status</label>
@@ -115,6 +88,14 @@
                                 @endforeach
                                 </select>
                             </label>
+						</div>
+						<div class="form-group row">
+							<label class="col-form-label col-lg-2">Dokumen <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+                                @foreach ($documents as $item)
+                                <iframe src="{{ url($item->name) }}" frameborder="0" style="height:200px ;width:100%;object-fit: contain;"></iframe>
+                                @endforeach
+							</div>
 						</div>
 
 					</fieldset>

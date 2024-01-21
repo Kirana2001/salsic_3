@@ -37,18 +37,18 @@
 						<th style="width:5%;">No</th>
 						<th>Organisasi</th>
 						<th>Cabor</th>
-                        <th>Tanggal Didirikan</th>
+                        {{-- <th>Tanggal Didirikan</th> --}}
 						<th>Pendiri</th>
 						<th>Ketua</th>
                         <th>Alamat</th>
-                        <th>Desa</th>
+                        {{-- <th>Desa</th>
                         <th>Kecamatan</th>
                         <th>Kota</th>
                         <th>Provinsi</th>
-                        <th>Total Anggota</th>
+                        <th>Total Anggota</th> --}}
                         <th>Anggota Pria</th>
                         <th>Anggota Wanita</th>
-                        <th>Dokumen</th>
+                        {{-- <th>Dokumen</th> --}}
 						<th style="text-align: center">Actions</th>
 					</tr>
 				</thead>
@@ -133,26 +133,26 @@
                     {data:'DT_RowIndex', name:'no'},
                     {data: 'organization_name'},
                     {data: 'cabor_string'},
-                    {data: 'founding_date'},
+                    // {data: 'founding_date'},
                     {data: 'founder'},
                     {data: 'leader'},
                     {data: 'address'},
-                    {data: 'village'},
-                    {data: 'district'},
-                    {data: 'city'},
-                    {data: 'province'},
-                    {data: 'all_member'},
+                    // {data: 'village'},
+                    // {data: 'district'},
+                    // {data: 'city'},
+                    // {data: 'province'},
+                    // {data: 'all_member'},
                     {data: 'male_member'},
                     {data: 'female_member'},
-					{data:null, render:function(data, type, row){
-                        let html = '';
-                        html += `
-                        <div style="text-align:center">
-                            <a href="{{ url('${data.document}')}}" target="_blank"><button type="button" class="btn btn-warning btn-icon"><i class="icon-eye" title="File"></i></button></a>
-                        </div>
-                        `;
-                        return html
-                    }},
+					// {data:null, render:function(data, type, row){
+                    //     let html = '';
+                    //     html += `
+                    //     <div style="text-align:center">
+                    //         <a href="{{ url('${data.document}')}}" target="_blank"><button type="button" class="btn btn-warning btn-icon"><i class="icon-eye" title="File"></i></button></a>
+                    //     </div>
+                    //     `;
+                    //     return html
+                    // }},
                     {data:null, render:function(data, type, row){
                         let html = '';
                         html += `

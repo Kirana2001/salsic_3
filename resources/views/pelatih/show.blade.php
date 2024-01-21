@@ -29,7 +29,7 @@
 				<form id="submit-form" class="form-validate-jquery" action="{{url('pelatih/'.$pelatih->id.'/update-status')}}" method="get">
 					@csrf
 					<fieldset class="mb-3">
-						<legend class="text-uppercase font-size-sm font-weight-bold">Data Pelatih</legend>
+						<legend class="text-uppercase font-size-sm font-weight-bold">Data Atlet</legend>
 
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Foto</label>
@@ -47,6 +47,14 @@
                             <label class="col-form-label col-lg-10">{{$pelatih->nik}}</label>
 						</div>
                         <div class="form-group row">
+							<label class="col-form-label col-lg-2">No KK</label>
+                            <label class="col-form-label col-lg-10">{{$pelatih->no_kk}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Cabor</label>
+                            <label class="col-form-label col-lg-10">{{$pelatih->gender}}</label>
+						</div>
+                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Cabor</label>
                             <label class="col-form-label col-lg-10">{{$pelatih->cabor->name}}</label>
 						</div>
@@ -58,9 +66,41 @@
 							<label class="col-form-label col-lg-2">Tanggl Lahir</label>
                             <label class="col-form-label col-lg-10">{{$pelatih->birth_date}}</label>
 						</div>
+						<div class="form-group row">
+							<label class="col-form-label col-lg-2">Provinsi</label>
+							<label class="col-form-label col-lg-10">{{$pelatih->province}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Kota</label>
+                            <label class="col-form-label col-lg-10">{{$pelatih->city}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Asal Sekolah</label>
+                            <label class="col-form-label col-lg-10">{{$pelatih->school}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Email</label>
+                            <label class="col-form-label col-lg-10">{{$pelatih->email}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">No Rekening</label>
+                            <label class="col-form-label col-lg-10">{{$pelatih->no_rek}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Bank</label>
+                            <label class="col-form-label col-lg-10">{{$pelatih->bank}}</label>
+						</div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Telepon</label>
                             <label class="col-form-label col-lg-10">{{$pelatih->phone}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Lini</label>
+                            <label class="col-form-label col-lg-10">{{$pelatih->lini}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Klasifikasi</label>
+                            <label class="col-form-label col-lg-10">{{$pelatih->klasifikasi}}</label>
 						</div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Status</label>

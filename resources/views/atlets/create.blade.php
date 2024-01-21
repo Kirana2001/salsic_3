@@ -40,13 +40,32 @@
 							</div>
 						</div>
                         <div class="form-group row">
-							<label class="col-form-label col-lg-2">NIK <span class="text-danger">*</span> </label>
+							<label class="col-form-label col-lg-2">No KTP <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
 								<input type="text" name="nik"
                                 class="form-control border-blue-700 border-1 @error('nik') is-invalid @enderror"
-                                placeholder="NIK" required autofocus autocomplete="off" value="{{ old('nik') }}">
+                                placeholder="No KTP" required autofocus autocomplete="off" value="{{ old('nik') }}">
 							</div>
 						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">No KK <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="text" name="no_kk"
+                                class="form-control border-blue-700 border-1 @error('no_kk') is-invalid @enderror"
+                                placeholder="No KK" required autofocus autocomplete="off" value="{{ old('no_kk') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Gender <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<select name="gender" id="gender"
+                                class="form-control form-control-select2" data-container-css-class="border-blue-700"
+                                data-dropdown-css-class="border-blue-700" required>
+                                    <option value="pria">Pria</option>
+                                    <option value="wanita">Wanita</option>
+                                </select>
+							</div>
+                        </div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Cabor <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
@@ -56,12 +75,21 @@
                                     @if ($cabors->count() < 1)
                                         <option value="">-- Pilih Cabor --</option>
                                     @endif
+                                    <option value="newCabor" class="font-weight-bold">Tambah Cabor</option>
                                     @foreach ($cabors as $cabor)
                                         <option value="{{$cabor->id}}">{{$cabor->name}}</option>
                                     @endforeach
                                 </select>
 							</div>
                         </div>
+                        <div class="form-group row" id="addCaborDiv">
+							<label class="col-form-label col-lg-2">Tambah Cabor <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="text" name="addCabor" id="addCabor"
+                                class="form-control border-blue-700 border-1 @error('addCabor') is-invalid @enderror"
+                                placeholder="Tambah Cabor" required autocomplete="off" value="{{ old('addCabor') }}">
+							</div>
+						</div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Tempat Lahir <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
@@ -92,6 +120,70 @@
 								<input type="string" name="phone"
                                 class="form-control border-blue-700 border-1 @error('phone') is-invalid @enderror"
                                 placeholder="Telepon" required autocomplete="off" value="{{ old('phone') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Provinsi <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="province"
+                                class="form-control border-blue-700 border-1 @error('province') is-invalid @enderror"
+                                placeholder="Provinsi" required autocomplete="off" value="{{ old('province') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Kota <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="city"
+                                class="form-control border-blue-700 border-1 @error('city') is-invalid @enderror"
+                                placeholder="Kota" required autocomplete="off" value="{{ old('city') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Asal Sekolah <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="school"
+                                class="form-control border-blue-700 border-1 @error('school') is-invalid @enderror"
+                                placeholder="Asal Sekolah" required autocomplete="off" value="{{ old('school') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Email <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="email"
+                                class="form-control border-blue-700 border-1 @error('email') is-invalid @enderror"
+                                placeholder="email" required autocomplete="off" value="{{ old('email') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">No Rekening <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="no_rek"
+                                class="form-control border-blue-700 border-1 @error('no_rek') is-invalid @enderror"
+                                placeholder="No Rekening" required autocomplete="off" value="{{ old('no_rek') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Nama Bank<span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="bank"
+                                class="form-control border-blue-700 border-1 @error('bank') is-invalid @enderror"
+                                placeholder="Nama Bank" required autocomplete="off" value="{{ old('bank') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Lini <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="lini"
+                                class="form-control border-blue-700 border-1 @error('lini') is-invalid @enderror"
+                                placeholder="Lini" required autocomplete="off" value="{{ old('lini') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Klasifikasi <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="klasifikasi"
+                                class="form-control border-blue-700 border-1 @error('klasifikasi') is-invalid @enderror"
+                                placeholder="Klasifikasi" required autocomplete="off" value="{{ old('klasifikasi') }}">
 							</div>
 						</div>
                         <div class="form-group row">
@@ -182,6 +274,12 @@
                         nik: {
                             required: 'Mohon diisi.'
                         },
+                        no_kk: {
+                            required: 'Mohon diisi.'
+                        },
+                        gender: {
+                            required: 'Mohon pilih salah satu.'
+                        },
                         birth_place: {
                             required: 'Mohon diisi.'
                         },
@@ -194,7 +292,31 @@
                         phone: {
                             required: 'Mohon diisi.'
                         },
-                        image: {
+                        province: {
+                            required: 'Mohon diisi.'
+                        },
+                        city: {
+                            required: 'Mohon diisi.'
+                        },
+                        school: {
+                            required: 'Mohon diisi.'
+                        },
+                        email: {
+                            required: 'Mohon diisi.'
+                        },
+                        no_rek: {
+                            required: 'Mohon diisi.'
+                        },
+                        bank: {
+                            required: 'Mohon diisi.'
+                        },
+                        lini: {
+                            required: 'Mohon diisi.'
+                        },
+                        phone: {
+                            required: 'Mohon diisi.'
+                        },
+                        klasifikasi: {
                             required: 'Mohon diisi.'
                         },
                         cabor_id: {
@@ -235,6 +357,18 @@
                 reader.readAsDataURL(file);
             }
         });
+
+        $('#cabor_id').on('change', function(){
+            if($(this).val() == 'newCabor'){
+                $('#addCaborDiv').show();
+                $('#cabor_id').attr('required', false);
+                $('#addCabor').attr('required', true);
+            } else {
+                $('#addCaborDiv').hide();
+                $('#cabor_id').attr('required', true);
+                $('#addCabor').attr('required', false);
+            }
+        })
     </script>
 	<script type="text/javascript">
 		$( document ).ready(function() {

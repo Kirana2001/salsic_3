@@ -153,7 +153,7 @@ class ArticleController extends Controller
 
     public function articleDatatable()
     {
-        $articles = Article::all();
+        $articles = Article::orderBy('id', 'desc')->get();
 
         return datatables()->of($articles)->addIndexColumn()->toJson();
     }

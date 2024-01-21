@@ -18,6 +18,7 @@ class RoleSeeder extends Seeder
             ['id' => 1, 'name' => 'Administrator'],
             ['id' => 10, 'name' => 'Atlet'],
             ['id' => 20, 'name' => 'Pelatih'],
+            ['id' => 41, 'name' => 'Anggota'],
             ['id' => 30, 'name' => 'Wasit'],
             ['id' => 90, 'name' => 'Umum']
         ];

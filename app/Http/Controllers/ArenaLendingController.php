@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Arena;
 use App\Models\ArenaLending;
+use App\Models\Documents;
 use App\Models\LendingStatus;
 use App\Models\NumberSetting;
 use Illuminate\Http\Request;
@@ -51,6 +52,11 @@ class ArenaLendingController extends Controller
             'arena_id' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'jenis_kegiatan' => 'required',
+            'nama_kegiatan' => 'required',
+            'purpose' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method']);
@@ -80,6 +86,21 @@ class ArenaLendingController extends Controller
         if (!$ok) {
             return redirect()->back()->with('error', 'Data peminjaman arena gagal disimpan');
         }
+        if ($request->document) {
+            foreach($request->document as $key=>$value){
+                $imageDestination = 'attachment/'.date('Y/m').'/lend-arena-dokumen';
+                $fileUploaded = $value;
+                $fileName = Auth::user()->id.'-'.time().'-'.$key.'.'.$fileUploaded->getClientOriginalExtension();
+                $moved = $fileUploaded->move($imageDestination, $fileName);
+
+                $file = $imageDestination.'/'.$fileName;
+                $data = array(
+                    'name' => $file,
+                    'arena_id' => $ok->id
+                );
+                Documents::create($data);
+            }
+        }
 
         return redirect('/peminjaman-arena')->with('success', 'Data peminjaman arena berhasil disimpan');
     }
@@ -94,6 +115,7 @@ class ArenaLendingController extends Controller
     {
         $datas['arenaLending'] = ArenaLending::find($id);
         $datas['statuses'] = LendingStatus::all();
+        $datas['documents'] = Documents::where('arena_id', $datas['arenaLending']->id)->get();
 
         return view('arena_lending.show', $datas);
     }
@@ -108,6 +130,7 @@ class ArenaLendingController extends Controller
     {
         $datas['arenaLending'] = ArenaLending::find($id);
         $datas['arenas'] = Arena::all();
+        $datas['documents'] = Documents::where('arena_id', $datas['arenaLending']->id)->get();
 
         return view('arena_lending.edit', $datas);
     }
@@ -131,6 +154,11 @@ class ArenaLendingController extends Controller
             'arena_id' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'jenis_kegiatan' => 'required',
+            'nama_kegiatan' => 'required',
+            'purpose' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method']);
@@ -155,6 +183,22 @@ class ArenaLendingController extends Controller
         $ok = ArenaLending::find($id)->update($data);
         if (!$ok) {
             return redirect()->back()->with('error', 'Data peminjaman arena gagal diubah');
+        }
+
+        if ($request->document) {
+            foreach($request->document as $key=>$value){
+                $imageDestination = 'attachment/'.date('Y/m').'/lend-arena-dokumen';
+                $fileUploaded = $value;
+                $fileName = Auth::user()->id.'-'.time().'-'.$key.'.'.$fileUploaded->getClientOriginalExtension();
+                $moved = $fileUploaded->move($imageDestination, $fileName);
+
+                $file = $imageDestination.'/'.$fileName;
+                $data = array(
+                    'name' => $file,
+                    'arena_id' => $ok->id
+                );
+                Documents::create($data);
+            }
         }
 
         return redirect('/peminjaman-arena')->with('success', 'Data peminjaman arena berhasil diubah');

@@ -11,12 +11,14 @@ class ApiEventController extends Controller
 {
     public function getEvents(Request $request)
     {
+        #$events = Event::where('status_id', '3')->get();
         $events = Event::where('status_id', '3');
 
         if ($request->search) {
             $events = $events->where('title', 'LIKE', "%$request->search%");
         }
 
+        #$events = $events->orderBy('date', 'desc');
         $events = $events->orderBy('start_date');
 
         $size = $request->size ?? 5;

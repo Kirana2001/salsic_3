@@ -16,14 +16,31 @@ class WasitApiController extends Controller
         $request->validate([
             'name' => 'required',
             'nik' => 'required',
+            'no_kk' => 'required',
+            'gender' => 'required',
             'cabor_id' => 'required',
             'birth_place' => 'required',
             'birth_date' => 'required',
             'address' => 'required',
             'phone' => 'required',
+            'province' => 'required',
+            'city' => 'required',
+            'school' => 'required',
+            'email' => 'required',
+            'no_rek' => 'required',
+            'bank' => 'required',
+            'lini' => 'required',
+            'klasifikasi' => 'required',
+            'image' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method', 'image']);
+
+        if($data['addCabor'] != null){
+
+            $createCabor = Cabor::firstOrCreate(['name' => $data['addCabor']]);
+            $data['cabor_id'] = $createCabor->id;
+        }
 
         $data['user_id'] = Auth::user()->id;
 
@@ -98,14 +115,30 @@ class WasitApiController extends Controller
         $request->validate([
             'name' => 'required',
             'nik' => 'required',
+            'no_kk' => 'required',
+            'gender' => 'required',
             'cabor_id' => 'required',
             'birth_place' => 'required',
             'birth_date' => 'required',
             'address' => 'required',
             'phone' => 'required',
+            'province' => 'required',
+            'city' => 'required',
+            'school' => 'required',
+            'email' => 'required',
+            'no_rek' => 'required',
+            'bank' => 'required',
+            'lini' => 'required',
+            'klasifikasi' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method', 'image']);
+
+        if($data['addCabor'] != null){
+
+            $createCabor = Cabor::firstOrCreate(['name' => $data['addCabor']]);
+            $data['cabor_id'] = $createCabor->id;
+        }
 
         $data['user_id'] = Auth::user()->id;
 

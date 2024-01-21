@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Arena;
 use App\Models\ArenaLending;
+use App\Models\Documents;
 use App\Models\LendingStatus;
 use App\Models\NumberSetting;
 use Illuminate\Http\Request;
@@ -46,9 +47,13 @@ class ArenaApiController extends Controller
             'email' => 'required',
             'address' => 'required',
             'arena_id' => 'required',
-            'purpose' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'jenis_kegiatan' => 'required',
+            'nama_kegiatan' => 'required',
+            'purpose' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method']);
@@ -83,6 +88,21 @@ class ArenaApiController extends Controller
                 'code' => 400,
                 'message' => 'error',
             ]);
+        }
+        if ($request->document) {
+            foreach($request->document as $key=>$value){
+                $imageDestination = 'attachment/'.date('Y/m').'/lend-arena-dokumen';
+                $fileUploaded = $value;
+                $fileName = Auth::user()->id.'-'.time().'-'.$key.'.'.$fileUploaded->getClientOriginalExtension();
+                $moved = $fileUploaded->move($imageDestination, $fileName);
+
+                $file = $imageDestination.'/'.$fileName;
+                $data = array(
+                    'name' => $file,
+                    'arena_id' => $ok->id
+                );
+                Documents::create($data);
+            }
         }
 
         return response()->json([

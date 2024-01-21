@@ -96,6 +96,22 @@
 							</div>
 						</div>
                         <div class="form-group row">
+							<label class="col-form-label col-lg-2">Jenis kegiatan <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="text" name="jenis_kegiatan"
+                                class="form-control border-blue-700 border-1 @error('jenis_kegiatan') is-invalid @enderror"
+                                placeholder="Jenis Kegiatan" required autofocus autocomplete="off" value="{{ old('jenis_kegiatan') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Nama Kegiatan <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="text" name="nama_kegiatan"
+                                class="form-control border-blue-700 border-1 @error('nama_kegiatan') is-invalid @enderror"
+                                placeholder="Nama Kegiatan" required autofocus autocomplete="off" value="{{ old('nama_kegiatan') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Tujuan Peminjaman <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
 								<input type="text" name="purpose"
@@ -117,6 +133,29 @@
 								<input type="date" name="end_date"
                                 class="form-control border-blue-700 border-1 @error('end_date') is-invalid @enderror"
                                 placeholder="Tanggal Akhir Peminjaman" required autofocus autocomplete="off" value="{{ date('Y-m-d') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Jam Mulai Peminjaman <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="time" name="start_time"
+                                class="form-control border-blue-700 border-1 @error('start_time') is-invalid @enderror"
+                                placeholder="Jam Mulai Peminjaman" required autofocus autocomplete="off" value="{{ date('H:i') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Jam Akhir Peminjaman <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="time" name="end_time"
+                                class="form-control border-blue-700 border-1 @error('end_time') is-invalid @enderror"
+                                placeholder="Jam Akhir Peminjaman" required autofocus autocomplete="off" value="{{ date('H:i') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Dokumen <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+							    <input type="file" name="document[]" id="document"
+                                class="form-control border-blue-700 border-1 @error('document') is-invalid @enderror" multiple="multiple" required>
 							</div>
 						</div>
 

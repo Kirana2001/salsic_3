@@ -65,6 +65,14 @@
                             <label class="col-form-label col-lg-10">{{$arenaLending->arena->name}}</label>
 						</div>
                         <div class="form-group row">
+							<label class="col-form-label col-lg-2">Jenis Kegiatan</label>
+                            <label class="col-form-label col-lg-10">{{$arenaLending->jenis_kegiatan}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Nama Kegiatan</label>
+                            <label class="col-form-label col-lg-10">{{$arenaLending->nama_kegiatan}}</label>
+						</div>
+                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Tujuan Peminjaman</label>
                             <label class="col-form-label col-lg-10">{{$arenaLending->purpose}}</label>
 						</div>
@@ -77,6 +85,14 @@
                             <label class="col-form-label col-lg-10">{{$arenaLending->end_date}}</label>
 						</div>
                         <div class="form-group row">
+							<label class="col-form-label col-lg-2">Jam Mulai Peminjaman</label>
+                            <label class="col-form-label col-lg-10">{{$arenaLending->start_time}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Jam Akhir Peminjaman</label>
+                            <label class="col-form-label col-lg-10">{{$arenaLending->end_time}}</label>
+						</div>
+                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Status</label>
                             <label class="col-form-label col-lg-10">
                                 <select name="status_id" id="status_id"
@@ -87,6 +103,14 @@
                                 @endforeach
                                 </select>
                             </label>
+						</div>
+						<div class="form-group row">
+							<label class="col-form-label col-lg-2">Dokumen <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+                                @foreach ($documents as $item)
+                                <iframe src="{{ url($item->name) }}" frameborder="0" style="height:200px ;width:100%;object-fit: contain;"></iframe>
+                                @endforeach
+							</div>
 						</div>
 
 

@@ -171,7 +171,7 @@ class ProfileController extends Controller
 
     public function profileDatatable(Request $request)
     {
-        $profiles = Profile::all();
+        $profiles = Profile::orderBy('id', 'desc')->get();
 
         foreach ($profiles as $profile) {
             $profile['cabor_string'] = $profile->cabor->name;

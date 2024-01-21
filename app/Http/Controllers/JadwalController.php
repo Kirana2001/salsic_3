@@ -6,6 +6,7 @@ use App\Models\Cabor;
 use App\Models\Jadwal;
 use App\Models\VerificationStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JadwalController extends Controller
 {
@@ -46,9 +47,23 @@ class JadwalController extends Controller
             'date' => 'required',
             'time' => 'required',
             'place' => 'required',
+            'image' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method']);
+
+        if ($request->image) {
+            $imageDestination = 'attachment/'.date('Y/m').'/jadwals-image';
+            $fileUploaded = $request->image;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'Data jadwal gagal disimpan');
+            }
+
+            $data['image'] = $imageDestination.'/'.$fileName;
+        }
 
         $data['skor_a'] = 0;
         $data['skor_b'] = 0;
@@ -114,9 +129,23 @@ class JadwalController extends Controller
             'date' => 'required',
             'time' => 'required',
             'place' => 'required',
+            'image' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method']);
+
+        if ($request->image) {
+            $imageDestination = 'attachment/'.date('Y/m').'/jadwals-image';
+            $fileUploaded = $request->image;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'Data jadwal gagal disimpan');
+            }
+
+            $data['image'] = $imageDestination.'/'.$fileName;
+        }
 
         $ok = Jadwal::find($id)->update($data);
         if (!$ok) {
@@ -144,15 +173,7 @@ class JadwalController extends Controller
 
     public function jadwalDatatable(Request $request)
     {
-        // $verified = $request->verified ?? 1;
-
-        // if ($verified == 1) {
-        //     $jadwals = Jadwal::where('status_id', 3)->get();
-        // } else {
-        //     $jadwals = Jadwal::where('status_id', '!=', 3)->get();
-        // }
-
-        $jadwals = Jadwal::all();
+        $jadwals = Jadwal::orderBy('id', 'desc')->get();
 
         foreach ($jadwals as $jadwal) {
             $jadwal['cabor_string'] = $jadwal->cabor->name;

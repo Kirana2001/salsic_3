@@ -23,4 +23,9 @@ class Atlet extends Model
     {
         return $this->belongsTo('App\Models\VerificationStatus', 'status_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

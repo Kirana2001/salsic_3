@@ -162,9 +162,9 @@ class EventController extends Controller
         $verified = $request->verified ?? 1;
 
         if ($verified == 1) {
-            $events = Event::where('status_id', 3)->get();
+            $events = Event::where('status_id', 3)->orderBy('id', 'desc')->get();
         } else {
-            $events = Event::where('status_id', '!=', 3)->get();
+            $events = Event::where('status_id', '!=', 3)->orderBy('id', 'desc')->get();
         }
 
 

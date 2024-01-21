@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\ApiEventController;
 use App\Http\Controllers\Api\ApiJadwalController;
 use App\Http\Controllers\Api\ApiPemudaController;
 use App\Http\Controllers\Api\ApiProfileController;
+use App\Http\Controllers\Api\DocumentApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -96,6 +97,10 @@ Route::middleware('cors:api')->group(function () {
                 Route::get('/pendaftaran-pemuda', 'index');
                 Route::get('/pendaftaran-pemuda-detail', 'show');
                 Route::post('/pendaftaran-pemuda-edit', 'update');
+            });
+
+            Route::controller(DocumentApiController::class)->group(function () {
+                Route::post('/upload-documents-multiple', 'uploadDocuments');
             });
         });
     });

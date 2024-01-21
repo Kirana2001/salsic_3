@@ -44,15 +44,31 @@ class AtletController extends Controller
         $request->validate([
             'name' => 'required',
             'nik' => 'required',
+            'no_kk' => 'required',
+            'gender' => 'required',
             'cabor_id' => 'required',
             'birth_place' => 'required',
             'birth_date' => 'required',
             'address' => 'required',
             'phone' => 'required',
+            'province' => 'required',
+            'city' => 'required',
+            'school' => 'required',
+            'email' => 'required',
+            'no_rek' => 'required',
+            'bank' => 'required',
+            'lini' => 'required',
+            'klasifikasi' => 'required',
             'image' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method', 'image']);
+
+        if($data['addCabor'] != null){
+
+            $createCabor = Cabor::firstOrCreate(['name' => $data['addCabor']]);
+            $data['cabor_id'] = $createCabor->id;
+        }
 
         $userData['name'] = $data['name'];
         $userData['username'] = $data['nik'];
@@ -141,14 +157,30 @@ class AtletController extends Controller
         $request->validate([
             'name' => 'required',
             'nik' => 'required',
+            'no_kk' => 'required',
+            'gender' => 'required',
             'cabor_id' => 'required',
             'birth_place' => 'required',
             'birth_date' => 'required',
             'address' => 'required',
             'phone' => 'required',
+            'province' => 'required',
+            'city' => 'required',
+            'school' => 'required',
+            'email' => 'required',
+            'no_rek' => 'required',
+            'bank' => 'required',
+            'lini' => 'required',
+            'klasifikasi' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method', 'image']);
+
+        if($data['addCabor'] != null){
+
+            $createCabor = Cabor::firstOrCreate(['name' => $data['addCabor']]);
+            $data['cabor_id'] = $createCabor->id;
+        }
 
         $userData['name'] = $data['name'];
         $userData['username'] = $data['nik'];
@@ -208,9 +240,9 @@ class AtletController extends Controller
         $verified = $request->verified ?? 1;
 
         if ($verified == 1) {
-            $atlets = Atlet::where('status_id', 3)->get();
+            $atlets = Atlet::where('status_id', 3)->orderBy('id', 'desc')->get();
         } else {
-            $atlets = Atlet::where('status_id', '!=', 3)->get();
+            $atlets = Atlet::where('status_id', '!=', 3)->orderBy('id', 'desc')->get();
         }
 
         foreach ($atlets as $atlet) {

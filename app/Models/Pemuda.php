@@ -23,4 +23,9 @@ class Pemuda extends Model
     {
         return $this->belongsTo('App\Models\VerificationStatus', 'status_id', 'id');
     }
+
+    public function anggota()
+    {
+        return $this->hasMany('App\Models\Anggota');
+    }
 }

@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 
 class ApiProfileController extends Controller
 {
-    public function getProfiles(Request $request)
+    public function getProfile(Request $request)
     {
-        // $profiles = Profile::all();
+        //$profiles = Profile::all();
 
-        // if ($request->search) {
-        //     $profiles = $profiles->where('title', 'LIKE', "%$request->search%");
-        // }
+        //if ($request->search) {
+            //$profiles = $profiles->where('title', 'LIKE', "%$request->search%");
+        //}
 
         $profiles = Profile::orderBy('created_at', 'desc');
 

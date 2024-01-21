@@ -55,14 +55,6 @@
 							</div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-form-label col-lg-2">Tanggal Didirikan <span class="text-danger">*</span> </label>
-                            <div class="col-lg-10">
-                                <input type="date" name="founding_date"
-                                class="form-control border-blue-700 border-1 @error('founding_date') is-invalid @enderror"
-                                placeholder="Tanggal Didirikan" required autocomplete="off" value="{{ old('founding_date') }}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Pendiri <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
 								<input type="text" name="founder"
@@ -79,11 +71,19 @@
 							</div>
 						</div>
                         <div class="form-group row">
-							<label class="col-form-label col-lg-2">NIK <span class="text-danger">*</span> </label>
+							<label class="col-form-label col-lg-2">Sekretaris <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
-								<input type="text" name="nik"
-                                class="form-control border-blue-700 border-1 @error('nik') is-invalid @enderror"
-                                placeholder="NIK" required autocomplete="off" value="{{ old('nik') }}">
+								<input type="text" name="secretary"
+                                class="form-control border-blue-700 border-1 @error('secretary') is-invalid @enderror"
+                                placeholder="Sekretaris" required autocomplete="off" value="{{ old('secretary') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Bendahara <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="text" name="treasurer"
+                                class="form-control border-blue-700 border-1 @error('treasurer') is-invalid @enderror"
+                                placeholder="Bendahara" required autocomplete="off" value="{{ old('treasurer') }}">
 							</div>
 						</div>
                         <div class="form-group row">
@@ -103,51 +103,11 @@
 							</div>
 						</div>
                         <div class="form-group row">
-							<label class="col-form-label col-lg-2">Desa <span class="text-danger">*</span> </label>
+							<label class="col-form-label col-lg-2">Deskripsi <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
-								<input type="string" name="village"
-                                class="form-control border-blue-700 border-1 @error('village') is-invalid @enderror"
-                                placeholder="Desa" required autocomplete="off" value="{{ old('village') }}">
-							</div>
-						</div>
-                        <div class="form-group row">
-							<label class="col-form-label col-lg-2">Kelurahan <span class="text-danger">*</span> </label>
-							<div class="col-lg-10">
-								<input type="string" name="subdistrict"
-                                class="form-control border-blue-700 border-1 @error('subdistrict') is-invalid @enderror"
-                                placeholder="Kelurahan" required autocomplete="off" value="{{ old('subdistrict') }}">
-							</div>
-						</div>
-                        <div class="form-group row">
-							<label class="col-form-label col-lg-2">Kecamatan <span class="text-danger">*</span> </label>
-							<div class="col-lg-10">
-								<input type="string" name="district"
-                                class="form-control border-blue-700 border-1 @error('district') is-invalid @enderror"
-                                placeholder="Kecamatan" required autocomplete="off" value="{{ old('district') }}">
-							</div>
-						</div>
-                        <div class="form-group row">
-							<label class="col-form-label col-lg-2">Kota <span class="text-danger">*</span> </label>
-							<div class="col-lg-10">
-								<input type="string" name="city"
-                                class="form-control border-blue-700 border-1 @error('city') is-invalid @enderror"
-                                placeholder="Kota" required autocomplete="off" value="{{ old('city') }}">
-							</div>
-						</div>
-                        <div class="form-group row">
-							<label class="col-form-label col-lg-2">Provinsi <span class="text-danger">*</span> </label>
-							<div class="col-lg-10">
-								<input type="string" name="province"
-                                class="form-control border-blue-700 border-1 @error('province') is-invalid @enderror"
-                                placeholder="Provinsi" required autocomplete="off" value="{{ old('province') }}">
-							</div>
-						</div>
-                        <div class="form-group row">
-							<label class="col-form-label col-lg-2">Total Anggota <span class="text-danger">*</span> </label>
-							<div class="col-lg-10">
-								<input type="number" name="all_member"
-                                class="form-control border-blue-700 border-1 @error('all_member') is-invalid @enderror"
-                                placeholder="Total Anggota" required autocomplete="off" value="{{ old('all_member') }}">
+                                <textarea name="description" id="description"
+                                class="form-control border-blue-700 border-1 @error('description') is-invalid @enderror"
+                                placeholder="Deskripsi" required autocomplete="off" cols="30" rows="5">{{ old('description') }}</textarea>
 							</div>
 						</div>
                         <div class="form-group row">
@@ -167,21 +127,10 @@
 							</div>
 						</div>
                         <div class="form-group row">
-                            <label class="col-form-label col-lg-2">Foto <span class="text-danger">*</span> </label>
-                            <div class="col-lg-10">
-                                <div class="card-img-actions mb-3">
-                                    <img class="card-img img-fluid" id="preview_image"
-                                    src="{{asset('global_assets/images/placeholders/placeholder.jpg')}}" alt="" style="height:150px;width:150px;object-fit: contain;">
-                                </div>
-                                <input type="file" name="image" id="image"
-                                class="form-control border-blue-700 border-1 @error('image') is-invalid @enderror" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Dokumen <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
-							    <input type="file" name="document" id="document"
-                                class="form-control border-blue-700 border-1 @error('document') is-invalid @enderror" required>
+							    <input type="file" name="document[]" id="document"
+                                class="form-control border-blue-700 border-1 @error('document') is-invalid @enderror" multiple="multiple" required>
 							</div>
 						</div>
 

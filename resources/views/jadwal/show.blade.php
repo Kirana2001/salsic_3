@@ -31,6 +31,13 @@
 					<fieldset class="mb-3">
 						<legend class="text-uppercase font-size-sm font-weight-bold">Data Jadwal</legend>
 
+						<div class="form-group row">
+							<label class="col-form-label col-lg-2">Foto</label>
+                            <label class="col-form-label col-lg-2">
+                                <img class="card-img img-fluid" id="preview_image"
+                                src="{{asset($jadwal->image)}}" alt="" style="height:150px;width:150px;object-fit: contain;">
+                            </label>
+						</div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Cabor <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">

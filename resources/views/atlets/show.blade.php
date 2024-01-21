@@ -47,6 +47,14 @@
                             <label class="col-form-label col-lg-10">{{$atlet->nik}}</label>
 						</div>
                         <div class="form-group row">
+							<label class="col-form-label col-lg-2">No KK</label>
+                            <label class="col-form-label col-lg-10">{{$atlet->no_kk}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Cabor</label>
+                            <label class="col-form-label col-lg-10">{{$atlet->gender}}</label>
+						</div>
+                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Cabor</label>
                             <label class="col-form-label col-lg-10">{{$atlet->cabor->name}}</label>
 						</div>
@@ -58,9 +66,41 @@
 							<label class="col-form-label col-lg-2">Tanggl Lahir</label>
                             <label class="col-form-label col-lg-10">{{$atlet->birth_date}}</label>
 						</div>
+						<div class="form-group row">
+							<label class="col-form-label col-lg-2">Provinsi</label>
+							<label class="col-form-label col-lg-10">{{$atlet->province}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Kota</label>
+                            <label class="col-form-label col-lg-10">{{$atlet->city}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Asal Sekolah</label>
+                            <label class="col-form-label col-lg-10">{{$atlet->school}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Email</label>
+                            <label class="col-form-label col-lg-10">{{$atlet->email}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">No Rekening</label>
+                            <label class="col-form-label col-lg-10">{{$atlet->no_rek}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Bank</label>
+                            <label class="col-form-label col-lg-10">{{$atlet->bank}}</label>
+						</div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Telepon</label>
                             <label class="col-form-label col-lg-10">{{$atlet->phone}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Lini</label>
+                            <label class="col-form-label col-lg-10">{{$atlet->lini}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Klasifikasi</label>
+                            <label class="col-form-label col-lg-10">{{$atlet->klasifikasi}}</label>
 						</div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Status</label>
