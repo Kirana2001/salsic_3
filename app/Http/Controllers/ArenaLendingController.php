@@ -96,7 +96,8 @@ class ArenaLendingController extends Controller
                 $file = $imageDestination.'/'.$fileName;
                 $data = array(
                     'name' => $file,
-                    'arena_id' => $ok->id
+                    'arena_id' => $ok->id,
+                    'flag' => $data['nama_kegiatan']
                 );
                 Documents::create($data);
             }

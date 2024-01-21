@@ -43,7 +43,7 @@
                         <th>Status</th>
 						<th style="text-align: center">Actions</th>
 					</tr>
-				<`/thead>
+				</thead>
 				<tbody>
 				</tbody>
 			</table>

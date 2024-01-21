@@ -91,7 +91,8 @@ class ApiPemudaController extends Controller
                 $file = $imageDestination.'/'.$fileName;
                 $data = array(
                     'name' => $file,
-                    'pemuda_id' => $ok->id
+                    'pemuda_id' => $ok->id,
+                    'flag' => $data['organization_name']
                 );
                 Documents::create($data);
             }
@@ -168,7 +169,8 @@ class ApiPemudaController extends Controller
                 $file = $imageDestination.'/'.$fileName;
                 $data = array(
                     'name' => $file,
-                    'pemuda_id' => $ok->id
+                    'pemuda_id' => $ok->id,
+                    'flag' => $data['organization_name']
                 );
                 Documents::create($data);
             }
