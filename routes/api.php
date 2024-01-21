@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiAnggotaController;
 use App\Http\Controllers\Api\ApiArticleController;
 use App\Http\Controllers\Api\ApiAuthenticationController;
 use App\Http\Controllers\Api\ArenaApiController;
@@ -40,7 +41,7 @@ Route::middleware('cors:api')->group(function () {
         Route::post('/lupapasswordotp', 'lupapasswordotp');
         Route::post('/lupapasswordinput', 'lupapasswordinput');
 
-        // Route::middleware('auth:api')->group(function () {
+        Route::middleware('auth:api')->group(function () {
             Route::get('/current-user', [ApiAuthenticationController::class, 'currentUser']);
 
             Route::controller(ApiArticleController::class)->group(function () {
@@ -68,6 +69,13 @@ Route::middleware('cors:api')->group(function () {
                 Route::get('/pendaftaran-atlet', 'index');
                 Route::get('/pendaftaran-atlet-detail', 'show');
                 Route::post('/pendaftaran-atlet-edit', 'update');
+            });
+
+            Route::controller(ApiAnggotaController::class)->group(function () {
+                Route::post('/pendaftaran-anggota', 'store');
+                Route::get('/pendaftaran-anggota', 'index');
+                Route::get('/pendaftaran-anggota-detail', 'show');
+                Route::post('/pendaftaran-anggota-edit', 'update');
             });
 
             Route::controller(PelatihApiController::class)->group(function () {
@@ -102,6 +110,6 @@ Route::middleware('cors:api')->group(function () {
             Route::controller(DocumentApiController::class)->group(function () {
                 Route::post('/upload-documents-multiple', 'uploadDocuments');
             });
-        // });
+        });
     });
 });
