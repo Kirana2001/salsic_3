@@ -108,6 +108,8 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(AnggotaController::class)->group(function () {
             Route::resource('/anggotas', AnggotaController::class);
             Route::get('/anggotas-datatable', 'anggotaDatatable');
+            Route::get('/anggotas/{id}/update-status', 'updateStatus');
+            Route::get('/pendaftaran-anggotas', 'registrationIndex');
         });
 
         Route::controller(JadwalController::class)->group(function () {

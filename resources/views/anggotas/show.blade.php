@@ -26,7 +26,7 @@
 			<div class="card-header header-elements-inline">
 			</div>
 			<div class="card-body">
-				<form id="submit-form" class="form-validate-jquery" action="#" method="get">
+				<form id="submit-form" class="form-validate-jquery" action="{{url('anggotas/'.$anggotas->id.'/update-status')}}" method="get">
 					@csrf
 					<fieldset class="mb-3">
 						<legend class="text-uppercase font-size-sm font-weight-bold">Data Anggota</legend>
@@ -148,11 +148,23 @@
 								<label>{{ $anggotas->facebook }}</label>
 							</div>
 						</div>
+						<div class="form-group row">
+							<label class="col-form-label col-lg-2">Status</label>
+                            <label class="col-form-label col-lg-10">
+                                <select name="status_id" id="status_id"
+                                class="form-control form-control-select2" data-container-css-class="border-blue-700"
+                                data-dropdown-css-class="border-blue-700" required>
+                                @foreach ($statuses as $status)
+                                    <option value="{{$status->id}}" {{$anggotas->status_id == $status->id ? 'selected' : ''}}>{{$status->name}}</option>
+                                @endforeach
+                                </select>
+                            </label>
+						</div>
 
 					</fieldset>
 					<div class="text-right">
 						<a href="{{ url('/anggotas')}}" class="btn btn-light">Kembali <i class="icon-undo"></i></a>
-						{{-- <button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button> --}}
+						<button type="submit" class="btn btn-primary">Simpan <i class="icon-paperplane ml-2"></i></button>
 					</div>
 				</form>
 			</div>

@@ -18,4 +18,14 @@ class Anggota extends Model
     {
         return $this->belongsTo('App\Models\Pemuda');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo('App\Models\VerificationStatus');
+    }
 }

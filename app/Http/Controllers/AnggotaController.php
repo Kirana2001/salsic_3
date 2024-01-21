@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Anggota;
 use App\Models\Pemuda;
 use App\Models\User;
+use App\Models\VerificationStatus;
 use Illuminate\Http\Request;
 
 class AnggotaController extends Controller
@@ -90,6 +91,7 @@ class AnggotaController extends Controller
     {
         $datas['anggotas'] = Anggota::find($id);
         $datas['pemudas'] = Pemuda::all();
+        $datas['statuses'] = VerificationStatus::all();
         return view('anggotas.show', $datas);
     }
 
@@ -160,7 +162,47 @@ class AnggotaController extends Controller
 
     public function anggotaDatatable()
     {
-        $anggotas = Anggota::with('pemuda')->orderBy('id', 'desc')->get();
+        $anggotas = Anggota::with(['pemuda', 'user'])->orderBy('id', 'desc')->get();
+        foreach ($anggotas as $anggota) {
+            $anggota->organization_name = $anggota->pemuda->organization_name;
+            $anggota->username = $anggota->user->username;
+            $anggota->status_string = $anggota->status->name;
+        }
         return datatables()->of($anggotas)->addIndexColumn()->toJson();
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status_id' => 'required',
+        ]);
+
+        $data = $request->only('status_id');
+
+        $anggota = Anggota::find($id);
+
+        // if ($request->status_id == 3) {
+        //     $ok = User::find($anggota->user_id)->update(['role_id' => 10]);
+        //     if (!$ok) {
+        //         return redirect()->back()->with('error', 'Status anggota gagal diubah');
+        //     }
+        // } else {
+        //     $ok = User::find($anggota->user_id)->update(['role_id' => 90]);
+        //     if (!$ok) {
+        //         return redirect()->back()->with('error', 'Status anggota gagal diubah');
+        //     }
+        // }
+
+        $ok = $anggota->update($data);
+        if (!$ok) {
+            return redirect()->back()->with('error', 'Status anggota gagal diubah');
+        }
+
+        return redirect('/anggotas')->with('success', 'Status anggota berhasil diubah');
+    }
+
+    public function registrationIndex()
+    {
+        return view('anggotas.registration');
     }
 }
