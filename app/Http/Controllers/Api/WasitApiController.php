@@ -53,8 +53,8 @@ class WasitApiController extends Controller
             if (!$moved) {
                 return response()->json([
                     'code' => 400,
-                    'message' => 'error',
-                ]);
+                    'message' => 'Data gambar wasit gagal disimpan',
+                ], 400);
             }
 
             $data['image'] = $imageDestination.'/'.$fileName;
@@ -66,8 +66,8 @@ class WasitApiController extends Controller
         if (!$ok) {
             return response()->json([
                 'code' => 400,
-                'message' => 'error',
-            ]);
+                'message' => 'Data wasit gagal disimpan',
+            ], 400);
         }
 
         return response()->json([
@@ -151,8 +151,8 @@ class WasitApiController extends Controller
             if (!$moved) {
                 return response()->json([
                     'code' => 400,
-                    'message' => 'error',
-                ]);
+                    'message' => 'Data gambar wasit gagal disimpan',
+                ], 400);
             }
 
             $data['image'] = $imageDestination.'/'.$fileName;
@@ -164,8 +164,8 @@ class WasitApiController extends Controller
         if (!$ok) {
             return response()->json([
                 'code' => 400,
-                'message' => 'error',
-            ]);
+                'message' => 'Data wasit gagal disimpan',
+            ], 400);
         }
 
         return response()->json([

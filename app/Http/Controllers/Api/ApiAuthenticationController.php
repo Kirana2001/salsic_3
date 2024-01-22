@@ -81,7 +81,7 @@ class ApiAuthenticationController extends Controller
             return response()->json([
                 'code' => 400,
                 'message' => 'Token Invalid',
-            ]);
+            ], 400);
         }
     }
 

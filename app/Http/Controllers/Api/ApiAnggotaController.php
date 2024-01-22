@@ -59,16 +59,16 @@ class ApiAnggotaController extends Controller
         if (User::where('username', $userData['username'])->count() > 0) {
             return response()->json([
                 'code' => 400,
-                'message' => 'error',
-            ]);
+                'message' => 'Username sudah dipakai',
+            ], 400);
         }
 
         $newUser = User::create($userData);
         if (!$newUser) {
             return response()->json([
                 'code' => 400,
-                'message' => 'error',
-            ]);
+                'message' => 'Gagal membuat User',
+            ], 400);
         }
         $data['user_id'] = $newUser->id;
         $data['status_id'] = 1;
@@ -77,8 +77,8 @@ class ApiAnggotaController extends Controller
         if (!$ok) {
             return response()->json([
                 'code' => 400,
-                'message' => 'error',
-            ]);
+                'message' => 'Gagal membuat data Anggota',
+            ], 400);
         }
 
         return response()->json([
@@ -126,7 +126,7 @@ class ApiAnggotaController extends Controller
             return response()->json([
                 'code' => 400,
                 'message' => 'error',
-            ]);
+            ], 400);
         }
 
         return response()->json([

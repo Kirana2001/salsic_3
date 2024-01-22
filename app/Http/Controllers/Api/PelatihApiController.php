@@ -53,8 +53,8 @@ class PelatihApiController extends Controller
             if (!$moved) {
                 return response()->json([
                     'code' => 400,
-                    'message' => 'error',
-                ]);
+                    'message' => 'Data gambar pelatih gagal disimpan',
+                ], 400);
             }
 
             $data['image'] = $imageDestination.'/'.$fileName;
@@ -68,8 +68,8 @@ class PelatihApiController extends Controller
         if (!$ok) {
             return response()->json([
                 'code' => 400,
-                'message' => 'error',
-            ]);
+                'message' => 'Data pelatih gagal disimpan',
+            ], 400);
         }
 
         return response()->json([
@@ -153,8 +153,8 @@ class PelatihApiController extends Controller
             if (!$moved) {
                 return response()->json([
                     'code' => 400,
-                    'message' => 'error',
-                ]);
+                    'message' => 'Data gambar pelatih gagal disimpan',
+                ], 400);
             }
 
             $data['image'] = $imageDestination.'/'.$fileName;
@@ -166,8 +166,8 @@ class PelatihApiController extends Controller
         if (!$ok) {
             return response()->json([
                 'code' => 400,
-                'message' => 'error',
-            ]);
+                'message' => 'Data Pelatih gagal disimpan',
+            ], 400);
         }
 
         return response()->json([

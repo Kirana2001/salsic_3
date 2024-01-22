@@ -72,7 +72,7 @@ class ArenaApiController extends Controller
             return response()->json([
                 'code' => 400,
                 'message' => 'arena telah dipinjam pada rentang waktu tersebut',
-            ]);
+            ], 400);
         }
 
         $numberSetting = NumberSetting::first();
@@ -86,8 +86,8 @@ class ArenaApiController extends Controller
         if (!$ok) {
             return response()->json([
                 'code' => 400,
-                'message' => 'error',
-            ]);
+                'message' => 'Sewa arena gagal',
+            ], 400);
         }
         if ($request->document) {
             foreach($request->document as $key=>$value){

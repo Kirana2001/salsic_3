@@ -20,7 +20,7 @@ class ApiPemudaController extends Controller
 
         foreach ($datas as $data) {
             // $data->cabor = Cabor::find($data->cabor_id)->name;
-            $data->bidang = Bidang::find($data->bidang_id)->name;
+            $data->bidang = Bidang::find($data->bidang_id)->name ?? '-';
             $data->status = VerificationStatus::find($data->status_id)->name;
         }
 
@@ -72,8 +72,8 @@ class ApiPemudaController extends Controller
             if (!$moved) {
                 return response()->json([
                     'code' => 400,
-                    'message' => 'Data pemuda gagal disimpan',
-                ]);
+                    'message' => 'Data gambar pemuda gagal disimpan',
+                ], 400);
             }
 
             $data['image'] = $imageDestination.'/'.$fileName;
@@ -86,7 +86,7 @@ class ApiPemudaController extends Controller
             return response()->json([
                 'code' => 400,
                 'message' => 'Data pemuda gagal disimpan',
-            ]);
+            ], 400);
         }
 
         if ($request->document) {
@@ -122,7 +122,7 @@ class ApiPemudaController extends Controller
             ]);
         }
         // $data->cabor = Cabor::find($data->cabor_id)->name;
-        $data->bidang = Bidang::find($data->bidang_id)->name;
+        $data->bidang = Bidang::find($data->bidang_id)->name ?? '-';
         $data->status = VerificationStatus::find($data->status_id)->name;
         $documents = [];
         $getDocuments = Documents::where('pemuda_id', $data->id)->get();
@@ -174,8 +174,8 @@ class ApiPemudaController extends Controller
             if (!$moved) {
                 return response()->json([
                     'code' => 400,
-                    'message' => 'Data pemuda gagal disimpan',
-                ]);
+                    'message' => 'Data gambar pemuda gagal disimpan',
+                ], 400);
             }
 
             $data['image'] = $imageDestination.'/'.$fileName;
