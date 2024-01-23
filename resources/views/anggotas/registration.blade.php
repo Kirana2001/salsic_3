@@ -125,14 +125,14 @@
 
                 let datas = [
                     {data:'DT_RowIndex', name:'no'},
-                    {data: 'name'},
-                    {data: 'username'},
+                    {data: 'name', defaultContent: '-'},
+                    {data: 'username', defaultContent: '-'},
                     {data: 'organisasi', defaultContent: '-'},
-                    {data: 'gender'},
-                    {data: 'alamat_domisili'},
-                    {data: 'telp'},
-                    {data: 'email'},
-                    {data: 'status_string'},
+                    {data: 'gender', defaultContent: '-'},
+                    {data: 'alamat_domisili', defaultContent: '-'},
+                    {data: 'telp', defaultContent: '-'},
+                    {data: 'email', defaultContent: '-'},
+                    {data: 'status_string', defaultContent: '-'},
                     {data:null, render:function(data, type, row){
                         let html = '';
                         html += `

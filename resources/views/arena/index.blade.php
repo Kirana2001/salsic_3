@@ -120,10 +120,10 @@
 		        });
 
                 let datas = [
-                    {data:'DT_RowIndex', name:'no'},
-                    {data: 'name'},
-                    {data: 'ownership'},
-                    {data: 'address'},
+                    {data:'DT_RowIndex', name:'no', defaultContent: '-'},
+                    {data: 'name', defaultContent: '-'},
+                    {data: 'ownership', defaultContent: '-'},
+                    {data: 'address', defaultContent: '-'},
                     {data:null, render:function(data, type, row){
                         let html = '';
                         html += `

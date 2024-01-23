@@ -120,9 +120,9 @@
 
                 let datas = [
                     {data:'DT_RowIndex', name:'no'},
-                    {data: 'title'},
-                    {data: 'author'},
-                    {data: 'date'},
+                    {data: 'title', defaultContent: '-'},
+                    {data: 'author', defaultContent: '-'},
+                    {data: 'date', defaultContent: '-'},
                     {data:null, render:function(data, type, row){
                         let html = '';
                         html += `

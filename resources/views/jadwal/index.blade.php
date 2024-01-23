@@ -124,13 +124,13 @@
 
                 let datas = [
                     {data:'DT_RowIndex', name:'no'},
-                    {data: 'cabor_string'},
-                    {data: 'pertandingan'},
-                    {data: 'skor'},
-                    {data: 'date'},
-                    {data: 'time'},
-                    {data: 'place'},
-                    {data: 'status_string'},
+                    {data: 'cabor_string', defaultContent: '-'},
+                    {data: 'pertandingan', defaultContent: '-'},
+                    {data: 'skor', defaultContent: '-'},
+                    {data: 'date', defaultContent: '-'},
+                    {data: 'time', defaultContent: '-'},
+                    {data: 'place', defaultContent: '-'},
+                    {data: 'status_string', defaultContent: '-'},
                     {data:null, render:function(data, type, row){
                         let html = '';
                         html += `

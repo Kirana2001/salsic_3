@@ -123,12 +123,12 @@
 
                 let datas = [
                     {data:'DT_RowIndex', name:'no'},
-                    {data: 'event_name'},
-                    {data: 'date_string'},
-                    {data: 'time_string'},
-                    {data: 'header'},
-                    {data: 'description'},
-                    {data: 'status_string'},
+                    {data: 'event_name', defaultContent: '-'},
+                    {data: 'date_string', defaultContent: '-'},
+                    {data: 'time_string', defaultContent: '-'},
+                    {data: 'header', defaultContent: '-'},
+                    {data: 'description', defaultContent: '-'},
+                    {data: 'status_string', defaultContent: '-'},
                     {data:null, render:function(data, type, row){
                         let html = '';
                         html += `

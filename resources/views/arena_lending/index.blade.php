@@ -127,15 +127,15 @@
 
                 let datas = [
                     {data:'DT_RowIndex', name:'no'},
-                    {data: 'number'},
-                    {data: 'name'},
-                    {data: 'nik'},
-                    {data: 'phone'},
-                    {data: 'email'},
-                    {data: 'arena_string'},
-                    {data: 'start_date'},
-                    {data: 'end_date'},
-                    {data: 'status_string'},
+                    {data: 'number', defaultContent: '-'},
+                    {data: 'name', defaultContent: '-'},
+                    {data: 'nik', defaultContent: '-'},
+                    {data: 'phone', defaultContent: '-'},
+                    {data: 'email', defaultContent: '-'},
+                    {data: 'arena_string', defaultContent: '-'},
+                    {data: 'start_date', defaultContent: '-'},
+                    {data: 'end_date', defaultContent: '-'},
+                    {data: 'status_string', defaultContent: '-'},
                     {data:null, render:function(data, type, row){
                         let html = '';
                         html += `

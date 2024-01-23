@@ -122,11 +122,11 @@
 
                 let datas = [
                     {data:'DT_RowIndex', name:'no'},
-                    {data: 'name'},
-                    {data: 'username'},
-                    {data: 'role_string'},
-                    {data: 'email'},
-                    {data: 'phone'},
+                    {data: 'name', defaultContent: '-'},
+                    {data: 'username', defaultContent: '-'},
+                    {data: 'role_string', defaultContent: '-'},
+                    {data: 'email', defaultContent: '-'},
+                    {data: 'phone', defaultContent: '-'},
                     {data:null, render:function(data, type, row){
                         let html = '';
                         html += `

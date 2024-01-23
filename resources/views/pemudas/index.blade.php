@@ -132,28 +132,13 @@
 
                 let datas = [
                     {data:'DT_RowIndex', name:'no'},
-                    {data: 'organization_name'},
-                    {data: 'bidang_string'},
-                    // {data: 'founding_date'},
-                    {data: 'founder'},
-                    {data: 'leader'},
-                    {data: 'address'},
-                    // {data: 'village'},
-                    // {data: 'district'},
-                    // {data: 'city'},
-                    // {data: 'province'},
-                    // {data: 'all_member'},
-                    {data: 'male_member'},
-                    {data: 'female_member'},
-					// {data:null, render:function(data, type, row){
-                    //     let html = '';
-                    //     html += `
-                    //     <div style="text-align:center">
-                    //         <a href="{{ url('${data.document}')}}" target="_blank"><button type="button" class="btn btn-warning btn-icon"><i class="icon-eye" title="File"></i></button></a>
-                    //     </div>
-                    //     `;
-                    //     return html
-                    // }},
+                    {data: 'organization_name', defaultContent: '-'},
+                    {data: 'bidang_string', defaultContent: '-'},
+                    {data: 'founder', defaultContent: '-'},
+                    {data: 'leader', defaultContent: '-'},
+                    {data: 'address', defaultContent: '-'},
+                    {data: 'male_member', defaultContent: '-'},
+                    {data: 'female_member', defaultContent: '-'},
                     {data:null, render:function(data, type, row){
                         let html = '';
                         html += `
