@@ -40,6 +40,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/atletExport', [FileController::class, 'atletExport']);
     Route::get('/pelatihExport', [FileController::class, 'pelatihExport']);
     Route::get('/wasitExport', [FileController::class, 'wasitExport']);
+    Route::get('/organisasiExport', [FileController::class, 'organisasiExport']);
+    Route::get('/arenaExport', [FileController::class, 'arenaExport']);
+    Route::get('/sewaExport', [FileController::class, 'sewaExport']);
+    Route::get('/anggotaExport', [FileController::class, 'anggotaExport']);
 
     Route::controller(UserController::class)->group(function () {
         Route::patch('/ubah-password/{id}',  'ubahPassSubmit');

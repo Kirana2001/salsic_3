@@ -64,13 +64,43 @@ class ArenaLendingController extends Controller
         $data['user_id'] = Auth::user()->id;
         $data['status_id'] = 1;
 
-        $existLending = ArenaLending::where('arena_id', $data['arena_id'])
-                        ->where('status_id', 3)
-                        ->whereBetween('start_date', [$data['start_date'], $data['end_date']])
-                        ->orWhere('arena_id', $data['arena_id'])
-                        ->where('status_id', 3)
-                        ->whereBetween('end_date', [$data['start_date'], $data['end_date']])->get();
+        // $existLending = ArenaLending::where('arena_id', $data['arena_id'])
+        //                 ->where('status_id', 3)
+        //                 ->whereBetween('start_date', [$data['start_date'], $data['end_date']])
+        //                 ->orWhere('arena_id', $data['arena_id'])
+        //                 ->where('status_id', 3)
+        //                 ->whereBetween('end_date', [$data['start_date'], $data['end_date']])->get();
 
+        $existLending = ArenaLending::where('status_id', 3)->where('arena_id', $data['arena_id'])
+                        ->where(function ($query) use ($data) {
+                            $query->where('start_date', '<', $data['start_date'])
+                                ->where('end_date', '>', $data['start_date']); // Case 1: input awal di tengah
+
+                            $query->orWhere('start_date', '<', $data['end_date'])
+                                ->where('end_date', '>', $data['end_date']); // Case 2: input akhir di tengah
+
+                            $query->orWhere('start_date', '=', $data['start_date'])
+                                ->where('end_date', '=', $data['end_date']); // Case 3: input sama
+
+                            $query->orWhere('start_date', '>', $data['start_date'])
+                                ->where('end_date', '<', $data['end_date']); // Case 4: input awal lebih awal dan input akhir lebih akhir
+
+                            // $query->where('start_date', '<', $data['start_date'])->where('end_date', '>', $data['start_date']) // case 1
+                            // ->orWhere('start_date', '<', $data['end_date'])->where('end_date', '>', $data['end_date']) // case 2
+                            // ->orWhere('start_date', $data['start_date'])->where('end_date', ['end_date']) // case 3
+                            // ->orWhere('start_date', '>', $data['start_date'])->where('end_date', '<', $data['end_date']); // case 4
+
+                            // $query->whereBetween('start_date', [$data['start_date'], $data['end_date']]);
+                            // ->orWhereBetween('end_date', [$data['start_date'], $data['end_date']])
+                            // ->orWhere(function ($query) use ($data) {
+                            //     $query->where('start_date', '>=', $data['start_date'])
+                            //     ->where('end_date', '<=', $data['end_date']);
+                            // });
+                        });
+                        // ->orWhere('start_date', $data['start_date'])->where(function ($query) use ($data) {
+                        //     $query->where('start_time', )
+                        // })
+        dd($existLending->count());
         if ($existLending->count() > 0) {
             return redirect()->back()->with('error', 'Telah ada peminjaman pada rentang tanggal tersebut');
         }

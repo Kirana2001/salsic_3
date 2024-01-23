@@ -44,19 +44,39 @@
                         <div class="card-body">
                           <div class="row">
                             <div class="col">
-                              <h5 class="card-title text-uppercase text-white mb-0">Pemuda</h5>
-                              <span class="h2 font-weight-bold mb-0">{{ $pemuda }}</span>
+                              <h5 class="card-title text-uppercase text-white mb-0">Anggota Pemuda</h5>
+                              <span class="h2 font-weight-bold mb-0">{{ $anggota_all }}</span>
                             </div>
                             <div class="col-auto">
                                 <i class="icon-users4 mr-3 icon-3x"></i>
                             </div>
                           </div>
                           <p class="mt-3 mb-0 text-white text-sm">
-                            <span class="text-nowrap">Total: {{ $total }} anggota</span>
-                            <span> | </span>
                             <span class="text-nowrap">Pria: {{ $pria }}</span>
                             <span> | </span>
                             <span class="text-nowrap">Wanita: {{ $wanita }}</span>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-violet-400 mb-4 mb-xl-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col">
+                              <h5 class="card-title text-uppercase text-white mb-0">Organisasi</h5>
+                              <span class="h2 font-weight-bold mb-0">{{ $pemuda }}</span>
+                            </div>
+                            <div class="col-auto">
+                                <i class="icon-collaboration mr-3 icon-3x"></i>
+                            </div>
+                          </div>
+                          <p class="mt-3 mb-0 text-white text-sm">
+                            <span class="text-nowrap">Total: {{ $pemuda_pria + $pemuda_wanita }} anggota</span>
+                            <span> | </span>
+                            <span class="text-nowrap">Pria: {{ $pemuda_pria }}</span>
+                            <span> | </span>
+                            <span class="text-nowrap">Wanita: {{ $pemuda_wanita }}</span>
                           </p>
                         </div>
                     </div>
@@ -75,6 +95,11 @@
                                 <i class="icon-accessibility mr-3 icon-3x"></i>
                             </div>
                           </div>
+                          <p class="mt-3 mb-0 text-white text-sm">
+                            <span class="text-nowrap">Pria: {{ $atlet_pria }}</span>
+                            <span> | </span>
+                            <span class="text-nowrap">Wanita: {{ $atlet_wanita }}</span>
+                          </p>
                         </div>
                     </div>
                 </div>
@@ -90,6 +115,11 @@
                                 <i class="icon-brain mr-3 icon-3x"></i>
                             </div>
                           </div>
+                          <p class="mt-3 mb-0 text-white text-sm">
+                            <span class="text-nowrap">Pria: {{ $pelatih_pria }}</span>
+                            <span> | </span>
+                            <span class="text-nowrap">Wanita: {{ $pelatih_wanita }}</span>
+                          </p>
                         </div>
                     </div>
                 </div>
@@ -105,6 +135,11 @@
                                 <i class="icon-clipboard4 mr-3 icon-3x"></i>
                             </div>
                           </div>
+                          <p class="mt-3 mb-0 text-white text-sm">
+                            <span class="text-nowrap">Pria: {{ $wasit_pria }}</span>
+                            <span> | </span>
+                            <span class="text-nowrap">Wanita: {{ $wasit_wanita }}</span>
+                          </p>
                         </div>
                     </div>
                 </div>

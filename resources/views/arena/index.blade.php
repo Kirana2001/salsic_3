@@ -27,8 +27,9 @@
 
 		<!-- Hover rows -->
 		<div class="card">
-			<div class="card-header header-elements-inline">
+			<div class="card-header">
 				<a href="{{url('/arena/create')}}"><button type="button" class="btn btn-success rounded-round"><i class="icon-add mr-2"></i> Tambah</button></a>
+				<a href="{{url('/arenaExport')}}"><button type="button" class="btn bg-light text-success rounded-round"><i class="icon-file-excel"></i></button></a>
 			</div>
 
 			<table class="table datatable-basic table-hover">

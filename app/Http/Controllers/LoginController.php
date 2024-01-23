@@ -54,13 +54,30 @@ class LoginController extends Controller
         $data['arena'] = Arena::all()->count();
         $pemuda = Pemuda::where('status_id', 3);
         $data['pemuda'] = $pemuda->count();
+        $data['pemuda_pria'] = $pemuda->sum('male_member');
+        $data['pemuda_wanita'] = $pemuda->sum('female_member');
+
         $data['sewa'] = ArenaLending::all()->count();
-        $data['pria'] = Anggota::whereHas('pemuda')->where('gender', 'pria')->count();
-        $data['wanita'] = Anggota::whereHas('pemuda')->where('gender', 'wanita')->count();
-        $data['total'] = $data['pria'] + $data['wanita'];
-        $data['atlet'] = Atlet::where('status_id', 3)->get()->count();
-        $data['pelatih'] = Pelatih::where('status_id', 3)->get()->count();
-        $data['wasit'] = Wasit::where('status_id', 3)->get()->count();
+
+        $data['anggota_all'] = Anggota::all()->count();
+        $data['pria'] = Anggota::where('gender', 'pria')->count();
+        $data['wanita'] = Anggota::where('gender', 'wanita')->count();
+        
+        $atlet = Atlet::where('status_id', 3)->get();
+        $data['atlet'] = $atlet->count();
+        $data['atlet_pria'] = $atlet->where('gender', 'pria')->count();
+        $data['atlet_wanita'] = $atlet->where('gender', 'wanita')->count();
+
+        $pelatih =  Pelatih::where('status_id', 3)->get();
+        $data['pelatih'] = $pelatih->count();
+        $data['pelatih_pria'] = $pelatih->where('gender', 'pria')->count();
+        $data['pelatih_wanita'] = $pelatih->where('gender', 'wanita')->count();
+
+        $wasit = Wasit::where('status_id', 3)->get();
+        $data['wasit'] = $wasit->count();
+        $data['wasit_pria'] = $wasit->where('gender', 'pria')->count();
+        $data['wasit_wanita'] = $wasit->where('gender', 'wanita')->count();
+        
         return view('dashboard', $data);
     }
 }

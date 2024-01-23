@@ -41,7 +41,7 @@ Route::middleware('cors:api')->group(function () {
         Route::post('/lupapasswordotp', 'lupapasswordotp');
         Route::post('/lupapasswordinput', 'lupapasswordinput');
 
-        // Route::middleware('auth:api')->group(function () {
+        Route::middleware('auth:api')->group(function () {
             Route::get('/current-user', [ApiAuthenticationController::class, 'currentUser']);
 
             Route::controller(ApiArticleController::class)->group(function () {
@@ -110,6 +110,6 @@ Route::middleware('cors:api')->group(function () {
             Route::controller(DocumentApiController::class)->group(function () {
                 Route::post('/upload-documents-multiple', 'uploadDocuments');
             });
-        // });
+        });
     });
 });
