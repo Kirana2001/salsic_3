@@ -41,6 +41,14 @@
 							</div>
 						</div>
                         <div class="form-group row">
+							<label class="col-form-label col-lg-2">Organisasi<span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="text" name="organisasi"
+                                class="form-control border-blue-700 border-1 @error('organisasi') is-invalid @enderror"
+                                placeholder="Organisasi" required autofocus autocomplete="off" value="{{ $anggotas->organisasi }}">
+							</div>
+						</div>
+                        {{-- <div class="form-group row">
 							<label class="col-form-label col-lg-2">Pemuda <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
 								<select name="pemuda_id" id="pemuda_id"
@@ -51,7 +59,7 @@
                                     @endforeach
                                 </select>
 							</div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Gender <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
@@ -279,9 +287,12 @@
                         email: {
                             required: 'Mohon diisi.'
                         },
-                        pemuda_id: {
-                            required: 'Mohon pilih salah satu.'
+                        organisasi: {
+                            required: 'Mohon diisi.'
                         },
+                        // pemuda_id: {
+                        //     required: 'Mohon pilih salah satu.'
+                        // },
                     },
                 });
 

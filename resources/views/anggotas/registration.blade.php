@@ -127,7 +127,7 @@
                     {data:'DT_RowIndex', name:'no'},
                     {data: 'name'},
                     {data: 'username'},
-                    {data: 'organization_name'},
+                    {data: 'organisasi', defaultContent: '-'},
                     {data: 'gender'},
                     {data: 'alamat_domisili'},
                     {data: 'telp'},

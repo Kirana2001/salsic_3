@@ -41,7 +41,8 @@ class AnggotaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'pemuda_id' => 'required',
+            // 'pemuda_id' => 'required',
+            'organisasi' => 'required',
             'gender' => 'required',
             'nik' => 'required',
             'alamat_ktp' => 'required',
@@ -72,6 +73,7 @@ class AnggotaController extends Controller
             return redirect()->back()->with('error', 'Data wasit gagal disimpan');
         }
         $data['user_id'] = $newUser->id;
+        $data['status_id'] = 1;
 
         $ok = Anggota::create($data);
         if (!$ok) {
@@ -119,7 +121,8 @@ class AnggotaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'pemuda_id' => 'required',
+            // 'pemuda_id' => 'required',
+            'organisasi' => 'required',
             'gender' => 'required',
             'nik' => 'required',
             'alamat_ktp' => 'required',
@@ -164,7 +167,7 @@ class AnggotaController extends Controller
     {
         $anggotas = Anggota::with(['pemuda', 'user'])->orderBy('id', 'desc')->get();
         foreach ($anggotas as $anggota) {
-            $anggota->organization_name = $anggota->pemuda->organization_name;
+            // $anggota->organization_name = $anggota->pemuda->organization_name;
             $anggota->username = $anggota->user->username;
             $anggota->status_string = $anggota->status->name;
         }

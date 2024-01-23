@@ -36,13 +36,14 @@
 					<tr>
 						<th style="width:5%;">No</th>
 						<th>Nama</th>
-						<th>Pemuda</th>
+						<th>Organisasi</th>
 						<th>Gender</th>
 						<th>NIK</th>
 						<th>Alamat Domisili</th>
 						<th>Pekerjaan</th>
                         <th>Telp</th>
                         <th>Email</th>
+                        <th>Status</th>
 						<th style="text-align: center">Actions</th>
 					</tr>
 				</thead>
@@ -126,13 +127,14 @@
                 let datas = [
                     {data:'DT_RowIndex', name:'no'},
                     {data: 'name'},
-                    {data: 'pemuda.organization_name'},
+                    {data: 'organisasi', defaultContent: '-'},
                     {data: 'gender'},
                     {data: 'nik'},
                     {data: 'alamat_domisili'},
                     {data: 'pekerjaan'},
                     {data: 'telp'},
                     {data: 'email'},
+                    {data: 'status_string'},
                     {data:null, render:function(data, type, row){
                         let html = '';
                         html += `

@@ -38,6 +38,12 @@
 							</div>
 						</div>
                         <div class="form-group row">
+							<label class="col-form-label col-lg-2">Organisasi<span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<label>{{ $anggotas->organisasi ?? '-' }}</label>
+							</div>
+						</div>
+                        {{-- <div class="form-group row">
 							<label class="col-form-label col-lg-2">Pemuda <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
 								<select name="pemuda_id" id="pemuda_id"
@@ -48,7 +54,7 @@
                                     @endforeach
                                 </select>
 							</div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Gender <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">

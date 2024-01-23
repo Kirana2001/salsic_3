@@ -17,7 +17,7 @@ class ApiAnggotaController extends Controller
         $datas = Anggota::where('user_id', Auth::user()->id)->get();
 
         foreach ($datas as $data) {
-            $data->pemuda = Pemuda::find($data->pemuda_id)->organization_name;
+            // $data->pemuda = Pemuda::find($data->pemuda_id)->organization_name;
             $data->status = VerificationStatus::find($data->status_id)->name;
         }
 
@@ -34,7 +34,8 @@ class ApiAnggotaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'pemuda_id' => 'required',
+            // 'pemuda_id' => 'required',
+            'organisasi' => 'required',
             'gender' => 'required',
             'nik' => 'required',
             'alamat_ktp' => 'required',
@@ -59,7 +60,7 @@ class ApiAnggotaController extends Controller
         if (User::where('username', $userData['username'])->count() > 0) {
             return response()->json([
                 'code' => 400,
-                'message' => 'Username sudah dipakai',
+                'message' => 'Username (NIK) sudah dipakai',
             ], 400);
         }
 
@@ -89,8 +90,8 @@ class ApiAnggotaController extends Controller
 
     public function show(Request $request)
     {
-        $data = Anggota::where('user_id', 23)->find($request->id);
-        $data->pemuda = Pemuda::find($data->pemuda_id)->organization_name;
+        $data = Anggota::where('user_id', Auth::user()->id)->find($request->id);
+        // $data->pemuda = Pemuda::find($data->pemuda_id)->organization_name;
         $data->status = VerificationStatus::find($data->status_id)->name;
         $data->makeHidden(['cabor_id', 'status_id', 'created_at', 'updated_at', 'deleted_at', 'pemuda_id']);
 
@@ -105,7 +106,8 @@ class ApiAnggotaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'pemuda_id' => 'required',
+            // 'pemuda_id' => 'required',
+            'organisasi' => 'required',
             'gender' => 'required',
             'nik' => 'required',
             'alamat_ktp' => 'required',
