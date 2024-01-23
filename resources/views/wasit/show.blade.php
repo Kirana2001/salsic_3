@@ -51,7 +51,7 @@
                             <label class="col-form-label col-lg-10">{{$wasit->no_kk}}</label>
 						</div>
                         <div class="form-group row">
-							<label class="col-form-label col-lg-2">Cabor</label>
+							<label class="col-form-label col-lg-2">Gender</label>
                             <label class="col-form-label col-lg-10">{{$wasit->gender}}</label>
 						</div>
                         <div class="form-group row">

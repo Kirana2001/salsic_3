@@ -37,6 +37,7 @@
 					<tr>
 						<th style="width:5%;">No</th>
 						<th>Nama</th>
+						<th>Gender</th>
                         <th>NIK</th>
 						<th>Cabor</th>
 						<th>Tempat / Tanggal Lahir</th>
@@ -125,6 +126,7 @@
                 let datas = [
                     {data:'DT_RowIndex', name:'no'},
                     {data: 'name'},
+					{data: 'gender'},
                     {data: 'nik'},
                     {data: 'cabor_string'},
                     {data: 'ttl_string'},

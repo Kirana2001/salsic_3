@@ -86,6 +86,24 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{url('/pemudas')}}" class="nav-link {{request()->is('pemudas*') ? 'active' : ''}}">
+                        <i class="icon-collaboration"></i>
+                        <span>
+                            Organisasi
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{url('/anggotas')}}" class="nav-link {{request()->is('anggotas*') ? 'active' : ''}}">
+                        <i class="icon-users4"></i>
+                        <span>
+                            Anggota Pemuda
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{url('/arena')}}" class="nav-link {{request()->is('arena*') ? 'active' : ''}}">
                         <i class="icon-home7"></i>
                         <span>
@@ -94,7 +112,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item nav-item-submenu {{request()->is(['pemudas*', 'anggotas*']) ? 'active nav-item-expanded nav-item-open' : ''}}">
+                {{-- <li class="nav-item nav-item-submenu {{request()->is(['pemudas*', 'anggotas*']) ? 'active nav-item-expanded nav-item-open' : ''}}">
                     <a href="#" class="nav-link"><i class="icon-users4"></i> <span>Manajemen Pemuda</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
@@ -109,12 +127,12 @@
                         <li class="nav-item">
                             <a href="{{url('/anggotas')}}" class="nav-link {{request()->is('anggotas*') ? 'active' : ''}}">
                                 <span>
-                                    Anggota
+                                    Anggota Pemuda
                                 </span>
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
                 <li class="nav-item nav-item-submenu {{request()->is(['pendaftaran*', 'peminjaman*']) ? 'active nav-item-expanded nav-item-open' : ''}}">
                     <a href="#" class="nav-link"><i class="icon-list-unordered"></i> <span>Manajemen User</span></a>
