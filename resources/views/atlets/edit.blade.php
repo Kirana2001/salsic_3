@@ -125,6 +125,22 @@
 							</div>
 						</div>
                         <div class="form-group row">
+							<label class="col-form-label col-lg-2">Berat badan <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="weight"
+                                class="form-control border-blue-700 border-1 @error('weight') is-invalid @enderror"
+                                placeholder="Berat Badan" required autocomplete="off" value="{{ $atlet->weight }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Tinggi badan <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="height"
+                                class="form-control border-blue-700 border-1 @error('height') is-invalid @enderror"
+                                placeholder="Tinggi Badan" required autocomplete="off" value="{{ $atlet->height }}">
+							</div>
+						</div>
+                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Provinsi <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
 								<input type="string" name="province"
@@ -146,6 +162,14 @@
 								<input type="string" name="school"
                                 class="form-control border-blue-700 border-1 @error('school') is-invalid @enderror"
                                 placeholder="Asal Sekolah" required autocomplete="off" value="{{ $atlet->school }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Nomor Induk Sekolah <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="nis"
+                                class="form-control border-blue-700 border-1 @error('nis') is-invalid @enderror"
+                                placeholder="NIS" required autocomplete="off" value="{{ $atlet->nis }}">
 							</div>
 						</div>
                         <div class="form-group row">
@@ -189,6 +213,14 @@
 							</div>
 						</div>
                         <div class="form-group row">
+							<label class="col-form-label col-lg-2">Keterangan <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="keterangan"
+                                class="form-control border-blue-700 border-1 @error('keterangan') is-invalid @enderror"
+                                placeholder="keterangan" required autocomplete="off" value="{{ $atlet->keterangan }}">
+							</div>
+						</div>
+                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Foto </label>
 							<div class="col-lg-10">
 								<div class="card-img-actions mb-3">
@@ -198,6 +230,78 @@
 								</div>
 							    <input type="file" name="image" id="image"
                                 class="form-control border-blue-700 border-1 @error('image') is-invalid @enderror">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">KK </label>
+							<div class="col-lg-10">
+								<div class="card-img-actions mb-3">
+									<img class="card-img img-fluid" id="preview_image2"
+                                    src="{{asset($atlet->kk_img)}}" alt=""
+                                    style="height:150px;width:150px;object-fit: contain;">
+								</div>
+							    <input type="file" name="kk_img" id="kk_img"
+                                class="form-control border-blue-700 border-1 @error('kk_img') is-invalid @enderror">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Kartu Pelajar </label>
+							<div class="col-lg-10">
+								<div class="card-img-actions mb-3">
+									<img class="card-img img-fluid" id="preview_image3"
+                                    src="{{asset($atlet->kartu_pelajar)}}" alt=""
+                                    style="height:150px;width:150px;object-fit: contain;">
+								</div>
+							    <input type="file" name="kartu_pelajar" id="kartu_pelajar"
+                                class="form-control border-blue-700 border-1 @error('kartu_pelajar') is-invalid @enderror">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Akte </label>
+							<div class="col-lg-10">
+								<div class="card-img-actions mb-3">
+									<img class="card-img img-fluid" id="preview_image4"
+                                    src="{{asset($atlet->akte)}}" alt=""
+                                    style="height:150px;width:150px;object-fit: contain;">
+								</div>
+							    <input type="file" name="akte" id="akte"
+                                class="form-control border-blue-700 border-1 @error('akte') is-invalid @enderror">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Raport </label>
+							<div class="col-lg-10">
+								<div class="card-img-actions mb-3">
+									<img class="card-img img-fluid" id="preview_image5"
+                                    src="{{asset($atlet->raport)}}" alt=""
+                                    style="height:150px;width:150px;object-fit: contain;">
+								</div>
+							    <input type="file" name="raport" id="raport"
+                                class="form-control border-blue-700 border-1 @error('raport') is-invalid @enderror">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Sertif Penghargaan </label>
+							<div class="col-lg-10">
+								<div class="card-img-actions mb-3">
+									<img class="card-img img-fluid" id="preview_image6"
+                                    src="{{asset($atlet->sertif_penghargaan)}}" alt=""
+                                    style="height:150px;width:150px;object-fit: contain;">
+								</div>
+							    <input type="file" name="sertif_penghargaan" id="sertif_penghargaan"
+                                class="form-control border-blue-700 border-1 @error('sertif_penghargaan') is-invalid @enderror">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Sertif Kejuaraan </label>
+							<div class="col-lg-10">
+								<div class="card-img-actions mb-3">
+									<img class="card-img img-fluid" id="preview_image6"
+                                    src="{{asset($atlet->sertif_kejuaraan)}}" alt=""
+                                    style="height:150px;width:150px;object-fit: contain;">
+								</div>
+							    <input type="file" name="sertif_kejuaraan" id="sertif_kejuaraan"
+                                class="form-control border-blue-700 border-1 @error('sertif_kejuaraan') is-invalid @enderror">
 							</div>
 						</div>
 
@@ -304,6 +408,9 @@
                         school: {
                             required: 'Mohon diisi.'
                         },
+                        nis: {
+                            required: 'Mohon diisi.'
+                        },
                         email: {
                             required: 'Mohon diisi.'
                         },
@@ -320,6 +427,9 @@
                             required: 'Mohon diisi.'
                         },
                         klasifikasi: {
+                            required: 'Mohon diisi.'
+                        },
+                        keterangan: {
                             required: 'Mohon diisi.'
                         },
                         cabor_id: {
@@ -356,6 +466,66 @@
                 let reader = new FileReader();
                 reader.onload = function (event) {
                     $('#preview_image').attr('src', event.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        $('#kk_img').on("change", function () {
+            const file = this.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#preview_image2').attr('src', event.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        $('#kartu_pelajar').on("change", function () {
+            const file = this.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#preview_image3').attr('src', event.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        $('#akte').on("change", function () {
+            const file = this.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#preview_image4').attr('src', event.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        $('#raport').on("change", function () {
+            const file = this.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#preview_image5').attr('src', event.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        $('#sertif_penghargaan').on("change", function () {
+            const file = this.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#preview_image6').attr('src', event.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        $('#sertif_kejuaraan').on("change", function () {
+            const file = this.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    $('#preview_image7').attr('src', event.target.result);
                 }
                 reader.readAsDataURL(file);
             }

@@ -51,9 +51,12 @@ class AtletController extends Controller
             'birth_date' => 'required',
             'address' => 'required',
             'phone' => 'required',
+            'weight' => 'required|numeric',
+            'height' => 'required|numeric',
             'province' => 'required',
             'city' => 'required',
             'school' => 'required',
+            'nis' => 'required',
             'email' => 'required',
             'no_rek' => 'required',
             'bank' => 'required',
@@ -99,7 +102,86 @@ class AtletController extends Controller
             $data['image'] = $imageDestination.'/'.$fileName;
         }
 
+        if ($request->kk_img) {
+            $imageDestination = 'attachment/'.date('Y/m').'/kk';
+            $fileUploaded = $request->kk_img;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['kk_img'] = $imageDestination.'/'.$fileName;
+        }
+
+        if ($request->kartu_pelajar) {
+            $imageDestination = 'attachment/'.date('Y/m').'/kartu_pelajar';
+            $fileUploaded = $request->kartu_pelajar;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['kartu_pelajar'] = $imageDestination.'/'.$fileName;
+        }
+
+        if ($request->akte) {
+            $imageDestination = 'attachment/'.date('Y/m').'/akte';
+            $fileUploaded = $request->akte;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['akte'] = $imageDestination.'/'.$fileName;
+        }
+
+        if ($request->raport) {
+            $imageDestination = 'attachment/'.date('Y/m').'/raport';
+            $fileUploaded = $request->raport;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['raport'] = $imageDestination.'/'.$fileName;
+        }
+
+        if ($request->sertif_penghargaan) {
+            $imageDestination = 'attachment/'.date('Y/m').'/sertif_penghargaan';
+            $fileUploaded = $request->sertif_penghargaan;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['sertif_penghargaan'] = $imageDestination.'/'.$fileName;
+        }
+
+        if ($request->sertif_kejuaraan) {
+            $imageDestination = 'attachment/'.date('Y/m').'/sertif_kejuaraan';
+            $fileUploaded = $request->sertif_kejuaraan;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['sertif_kejuaraan'] = $imageDestination.'/'.$fileName;
+        }
+
         $data['status_id'] = 3;
+        $data['keterangan'] = 'APPROVED';
 
         $ok = Atlet::create($data);
         if (!$ok) {
@@ -164,14 +246,18 @@ class AtletController extends Controller
             'birth_date' => 'required',
             'address' => 'required',
             'phone' => 'required',
+            'weight' => 'required|numeric',
+            'height' => 'required|numeric',
             'province' => 'required',
             'city' => 'required',
             'school' => 'required',
+            'nis' => 'required',
             'email' => 'required',
             'no_rek' => 'required',
             'bank' => 'required',
             'lini' => 'required',
             'klasifikasi' => 'required',
+            'keterangan' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method', 'image']);
@@ -209,6 +295,84 @@ class AtletController extends Controller
             }
 
             $data['image'] = $imageDestination.'/'.$fileName;
+        }
+
+        if ($request->kk_img) {
+            $imageDestination = 'attachment/'.date('Y/m').'/kk';
+            $fileUploaded = $request->kk_img;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['kk_img'] = $imageDestination.'/'.$fileName;
+        }
+
+        if ($request->kartu_pelajar) {
+            $imageDestination = 'attachment/'.date('Y/m').'/kartu_pelajar';
+            $fileUploaded = $request->kartu_pelajar;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['kartu_pelajar'] = $imageDestination.'/'.$fileName;
+        }
+
+        if ($request->akte) {
+            $imageDestination = 'attachment/'.date('Y/m').'/akte';
+            $fileUploaded = $request->akte;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['akte'] = $imageDestination.'/'.$fileName;
+        }
+
+        if ($request->raport) {
+            $imageDestination = 'attachment/'.date('Y/m').'/raport';
+            $fileUploaded = $request->raport;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['raport'] = $imageDestination.'/'.$fileName;
+        }
+
+        if ($request->sertif_penghargaan) {
+            $imageDestination = 'attachment/'.date('Y/m').'/sertif_penghargaan';
+            $fileUploaded = $request->sertif_penghargaan;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['sertif_penghargaan'] = $imageDestination.'/'.$fileName;
+        }
+
+        if ($request->sertif_kejuaraan) {
+            $imageDestination = 'attachment/'.date('Y/m').'/sertif_kejuaraan';
+            $fileUploaded = $request->sertif_kejuaraan;
+            $fileName = Auth::user()->id.'-'.time().'.'.$fileUploaded->getClientOriginalExtension();
+            $moved = $fileUploaded->move($imageDestination, $fileName);
+
+            if (!$moved) {
+                return redirect()->back()->with('error', 'File gagal disimpan');
+            }
+
+            $data['sertif_kejuaraan'] = $imageDestination.'/'.$fileName;
         }
 
         $ok = Atlet::find($id)->update($data);

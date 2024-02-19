@@ -123,6 +123,22 @@
 							</div>
 						</div>
                         <div class="form-group row">
+							<label class="col-form-label col-lg-2">Berat badan <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="weight"
+                                class="form-control border-blue-700 border-1 @error('weight') is-invalid @enderror"
+                                placeholder="Berat Badan" required autocomplete="off" value="{{ old('weight') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Tinggi badan <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="height"
+                                class="form-control border-blue-700 border-1 @error('height') is-invalid @enderror"
+                                placeholder="Tinggi Badan" required autocomplete="off" value="{{ old('height') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Provinsi <span class="text-danger">*</span> </label>
 							<div class="col-lg-10">
 								<input type="string" name="province"
@@ -144,6 +160,14 @@
 								<input type="string" name="school"
                                 class="form-control border-blue-700 border-1 @error('school') is-invalid @enderror"
                                 placeholder="Asal Sekolah" required autocomplete="off" value="{{ old('school') }}">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Nomor Induk Sekolah <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+								<input type="string" name="nis"
+                                class="form-control border-blue-700 border-1 @error('nis') is-invalid @enderror"
+                                placeholder="NIS" required autocomplete="off" value="{{ old('nis') }}">
 							</div>
 						</div>
                         <div class="form-group row">
@@ -195,6 +219,48 @@
 								</div>
 							    <input type="file" name="image" id="image"
                                 class="form-control border-blue-700 border-1 @error('image') is-invalid @enderror" required>
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">KK <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+							    <input type="file" name="kk_img" id="kk_img"
+                                class="form-control border-blue-700 border-1 @error('kk_img') is-invalid @enderror" required>
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Kartu Pelajar <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+							    <input type="file" name="kartu_pelajar" id="kartu_pelajar"
+                                class="form-control border-blue-700 border-1 @error('kartu_pelajar') is-invalid @enderror" required>
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Akte <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+							    <input type="file" name="akte" id="akte"
+                                class="form-control border-blue-700 border-1 @error('akte') is-invalid @enderror" required>
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Raport <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+							    <input type="file" name="raport" id="raport"
+                                class="form-control border-blue-700 border-1 @error('raport') is-invalid @enderror" required>
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Sertif Pengahrgaan <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+							    <input type="file" name="sertif_penghargaan" id="sertif_penghargaan"
+                                class="form-control border-blue-700 border-1 @error('sertif_penghargaan') is-invalid @enderror" required>
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Sertif Kejuaraan <span class="text-danger">*</span> </label>
+							<div class="col-lg-10">
+							    <input type="file" name="sertif_kejuaraan" id="sertif_kejuaraan"
+                                class="form-control border-blue-700 border-1 @error('sertif_kejuaraan') is-invalid @enderror" required>
 							</div>
 						</div>
 
@@ -299,6 +365,9 @@
                             required: 'Mohon diisi.'
                         },
                         school: {
+                            required: 'Mohon diisi.'
+                        },
+                        nis: {
                             required: 'Mohon diisi.'
                         },
                         email: {

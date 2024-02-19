@@ -39,6 +39,48 @@
                             </label>
 						</div>
                         <div class="form-group row">
+							<label class="col-form-label col-lg-2">KK</label>
+                            <label class="col-form-label col-lg-2">
+                                <img class="card-img img-fluid" id="preview_image"
+                                src="{{asset($atlet->kk_img)}}" alt="" style="height:150px;width:150px;object-fit: contain;">
+                            </label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Kartu Pelajar</label>
+                            <label class="col-form-label col-lg-2">
+                                <img class="card-img img-fluid" id="preview_image"
+                                src="{{asset($atlet->kartu_pelajar)}}" alt="" style="height:150px;width:150px;object-fit: contain;">
+                            </label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Akte</label>
+                            <label class="col-form-label col-lg-2">
+                                <img class="card-img img-fluid" id="preview_image"
+                                src="{{asset($atlet->akte)}}" alt="" style="height:150px;width:150px;object-fit: contain;">
+                            </label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Raport</label>
+                            <label class="col-form-label col-lg-2">
+                                <img class="card-img img-fluid" id="preview_image"
+                                src="{{asset($atlet->raport)}}" alt="" style="height:150px;width:150px;object-fit: contain;">
+                            </label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Sertif Penghargaan</label>
+                            <label class="col-form-label col-lg-2">
+                                <img class="card-img img-fluid" id="preview_image"
+                                src="{{asset($atlet->sertif_penghargaan)}}" alt="" style="height:150px;width:150px;object-fit: contain;">
+                            </label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Sertif Kejuaraan</label>
+                            <label class="col-form-label col-lg-2">
+                                <img class="card-img img-fluid" id="preview_image"
+                                src="{{asset($atlet->sertif_kejuaraan)}}" alt="" style="height:150px;width:150px;object-fit: contain;">
+                            </label>
+						</div>
+                        <div class="form-group row">
 							<label class="col-form-label col-lg-2">Nama</label>
                             <label class="col-form-label col-lg-10">{{$atlet->name}}</label>
 						</div>
@@ -101,6 +143,10 @@
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Klasifikasi</label>
                             <label class="col-form-label col-lg-10">{{$atlet->klasifikasi}}</label>
+						</div>
+                        <div class="form-group row">
+							<label class="col-form-label col-lg-2">Keterangan</label>
+                            <label class="col-form-label col-lg-10">{{$atlet->keterangan}}</label>
 						</div>
                         <div class="form-group row">
 							<label class="col-form-label col-lg-2">Status</label>
