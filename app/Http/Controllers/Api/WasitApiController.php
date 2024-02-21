@@ -36,7 +36,7 @@ class WasitApiController extends Controller
 
         $data = $request->except(['_token', '_method', 'image']);
 
-        if($data['addCabor'] != null){
+        if(isset($data['addCabor'])){
 
             $createCabor = Cabor::firstOrCreate(['name' => $data['addCabor']]);
             $data['cabor_id'] = $createCabor->id;
@@ -134,7 +134,7 @@ class WasitApiController extends Controller
 
         $data = $request->except(['_token', '_method', 'image']);
 
-        if($data['addCabor'] != null){
+        if(isset($data['addCabor'])){
 
             $createCabor = Cabor::firstOrCreate(['name' => $data['addCabor']]);
             $data['cabor_id'] = $createCabor->id;

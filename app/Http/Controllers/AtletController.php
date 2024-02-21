@@ -63,6 +63,12 @@ class AtletController extends Controller
             'lini' => 'required',
             'klasifikasi' => 'required',
             'image' => 'required',
+            'kk_img' => 'required',
+            'kartu_pelajar' => 'required',
+            'akte' => 'required',
+            'raport' => 'required',
+            'sertif_penghargaan' => 'required',
+            'sertif_kejuaraan' => 'required',
         ]);
 
         $data = $request->except(['_token', '_method', 'image']);
