@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\PelatihApiController;
 use App\Http\Controllers\Api\WasitApiController;
 use App\Http\Controllers\Api\ApiEventController;
 use App\Http\Controllers\Api\ApiJadwalController;
+use App\Http\Controllers\Api\ApiNotificationController;
 use App\Http\Controllers\Api\ApiPemudaController;
 use App\Http\Controllers\Api\ApiProfileController;
 use App\Http\Controllers\Api\DocumentApiController;
@@ -43,6 +44,8 @@ Route::middleware('cors:api')->group(function () {
 
         Route::middleware('auth:api')->group(function () {
             Route::get('/current-user', [ApiAuthenticationController::class, 'currentUser']);
+            Route::get('/getNotif', [ApiNotificationController::class, 'getNotif']);
+            Route::get('/readNotif/{id}', [ApiNotificationController::class, 'readNotif']);
 
             Route::controller(ApiArticleController::class)->group(function () {
                 Route::get('/artikel', 'getArticles');

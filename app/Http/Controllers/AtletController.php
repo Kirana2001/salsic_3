@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Atlet;
 use App\Models\Cabor;
+use App\Models\Notification;
 use App\Models\User;
 use App\Models\VerificationStatus;
 use Illuminate\Http\Request;
@@ -436,6 +437,11 @@ class AtletController extends Controller
 
         if ($request->status_id == 3) {
             $ok = User::find($atlet->user_id)->update(['role_id' => 10]);
+            $data['keterangan'] = 'APPROVED';
+            Notification::create([
+                'user_id' => $atlet->user->id,
+                'description' => 'Akun telah di approved',
+            ]);
             if (!$ok) {
                 return redirect()->back()->with('error', 'Status atlet gagal diubah');
             }
