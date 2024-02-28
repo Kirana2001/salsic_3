@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(
+            'sidebar', 'App\Http\ViewComposers\NotifComposer'
+        );
     }
 }

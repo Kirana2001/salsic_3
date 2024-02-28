@@ -135,13 +135,21 @@
                 </li> --}}
 
                 <li class="nav-item nav-item-submenu {{request()->is(['pendaftaran*', 'peminjaman*']) ? 'active nav-item-expanded nav-item-open' : ''}}">
-                    <a href="#" class="nav-link"><i class="icon-list-unordered"></i> <span>Manajemen User</span></a>
+                    <a href="#" class="nav-link"><i class="icon-list-unordered"></i> 
+                        <span>Manajemen User
+                            @if ($pendingApproval > 0)
+                                <sup><span class="badge badge-pill bg-warning-400 ml-auto ml-md-0">{{ $pendingApproval}}</span></sup>
+                            @endif
+                        </span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
                         <li class="nav-item">
                             <a href="{{url('/pendaftaran-atlets')}}" class="nav-link {{request()->is('pendaftaran-atlets*') ? 'active' : ''}}">
                                 <span>
                                     Pendaftaran Atlet
+                                    @if ($atletApproval > 0)
+                                        <sup><span class="badge badge-pill bg-warning-400 ml-auto ml-md-0">{{ $atletApproval}}</span></sup>
+                                    @endif
                                 </span>
                             </a>
                         </li>
