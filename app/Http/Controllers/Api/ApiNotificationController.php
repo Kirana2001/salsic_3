@@ -5,17 +5,18 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class ApiNotificationController extends Controller
 {
     public function getNotif(Request $req){
-        if(!$req->user_id) {
+        if(!Auth::user()->id) {
             return response()->json([
                 'code' => 400,
                 'message' => 'id user diperlukan',
             ], 400);
         }
-        $notif = Notification::where('user_id', $req->user_id)->get();
+        $notif = Notification::where('user_id', Auth::user()->id)->get();
         return response()->json([
             'code' => 200,
             'message' => 'success',
@@ -24,6 +25,12 @@ class ApiNotificationController extends Controller
     }
 
     public function readNotif($id){
+        if(!Notification::find($id)) {
+            return response()->json([
+                'code' => 404,
+                'message' => 'id notif tidak ditemukan',
+            ], 404);
+        }
         $getNotif = Notification::find($id)->update([
             'status' => 'read'
         ]);
